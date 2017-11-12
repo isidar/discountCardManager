@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="13240" systemVersion="16G29" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Card" representedClassName="Card" syncable="YES" codeGenerationType="category">
+        <attribute name="backImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="barcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cardDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cardName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="colorFilter" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="frontImage" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="logo" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="card" inverseEntity="Tag" syncable="YES"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="category">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="card" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Card" inverseName="tags" inverseEntity="Card" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Card" positionX="81" positionY="-216" width="128" height="163"/>
+        <element name="Tag" positionX="-155" positionY="-126" width="128" height="73"/>
+    </elements>
+</model>

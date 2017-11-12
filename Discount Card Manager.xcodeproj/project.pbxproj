@@ -7,23 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		211BABCC1FB0675600535840 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BABCB1FB0675600535840 /* ButtonView.swift */; };
+		215D2E291FB2206B009E78EA /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D2E281FB2206B009E78EA /* CardManager.swift */; };
+		215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54B41FB32507003D7D6D /* Custom Features.swift */; };
+		21AAD3C61FB88AD3002BC433 /* plusMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 21AAD3C41FB88AD2002BC433 /* plusMark.png */; };
+		21AAD3C71FB88AD3002BC433 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 21AAD3C51FB88AD2002BC433 /* questionMark.png */; };
 		21D1D9DE1FAB451C003E77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9DD1FAB451C003E77F3 /* AppDelegate.swift */; };
-		21D1D9E01FAB451D003E77F3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9DF1FAB451D003E77F3 /* ViewController.swift */; };
 		21D1D9E31FAB451F003E77F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D1D9E11FAB451F003E77F3 /* Main.storyboard */; };
 		21D1D9E61FAB4524003E77F3 /* Discount_Card_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9E41FAB4523003E77F3 /* Discount_Card_Manager.xcdatamodeld */; };
 		21D1D9E81FAB4528003E77F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21D1D9E71FAB4528003E77F3 /* Assets.xcassets */; };
 		21D1D9EB1FAB4528003E77F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D1D9E91FAB4528003E77F3 /* LaunchScreen.storyboard */; };
+		21D1D9F61FAB4B55003E77F3 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */; };
+		21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB471FB1CABB00A48F24 /* Card.swift */; };
+		21E3EB4A1FB1CAEF00A48F24 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB491FB1CAEF00A48F24 /* Tag.swift */; };
+		21E3EB4E1FB1D37D00A48F24 /* DetailTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4D1FB1D37D00A48F24 /* DetailTableVC.swift */; };
+		21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		211BABCB1FB0675600535840 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		215D2E281FB2206B009E78EA /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
+		215D54B41FB32507003D7D6D /* Custom Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Features.swift"; sourceTree = "<group>"; };
+		21AAD3C41FB88AD2002BC433 /* plusMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusMark.png; sourceTree = "<group>"; };
+		21AAD3C51FB88AD2002BC433 /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
 		21D1D9DA1FAB4519003E77F3 /* Discount Card Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Discount Card Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D1D9DD1FAB451C003E77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		21D1D9DF1FAB451D003E77F3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		21D1D9E21FAB451F003E77F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		21D1D9E51FAB4524003E77F3 /* Discount_Card_Manager.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Discount_Card_Manager.xcdatamodel; sourceTree = "<group>"; };
 		21D1D9E71FAB4528003E77F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		21D1D9EA1FAB4528003E77F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21D1D9EC1FAB452A003E77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		21E3EB471FB1CABB00A48F24 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		21E3EB491FB1CAEF00A48F24 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		21E3EB4D1FB1D37D00A48F24 /* DetailTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableVC.swift; sourceTree = "<group>"; };
+		21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +55,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		211BABD31FB06A5C00535840 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */,
+				21E3EB4D1FB1D37D00A48F24 /* DetailTableVC.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		211BABD41FB06A7900535840 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				21D1D9E41FAB4523003E77F3 /* Discount_Card_Manager.xcdatamodeld */,
+				21E3EB471FB1CABB00A48F24 /* Card.swift */,
+				21E3EB491FB1CAEF00A48F24 /* Tag.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		211BABD51FB06A9800535840 /* Other Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */,
+				211BABCB1FB0675600535840 /* ButtonView.swift */,
+			);
+			path = "Other Custom Views";
+			sourceTree = "<group>";
+		};
+		215D2E2A1FB22074009E78EA /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				215D2E281FB2206B009E78EA /* CardManager.swift */,
+				215D54B41FB32507003D7D6D /* Custom Features.swift */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		215D2E2B1FB22885009E78EA /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				21AAD3C41FB88AD2002BC433 /* plusMark.png */,
+				21AAD3C51FB88AD2002BC433 /* questionMark.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		21D1D9D11FAB4515003E77F3 = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +120,26 @@
 		21D1D9DC1FAB451A003E77F3 /* Discount Card Manager */ = {
 			isa = PBXGroup;
 			children = (
-				21D1D9DD1FAB451C003E77F3 /* AppDelegate.swift */,
-				21D1D9DF1FAB451D003E77F3 /* ViewController.swift */,
 				21D1D9E11FAB451F003E77F3 /* Main.storyboard */,
+				211BABD31FB06A5C00535840 /* View Controllers */,
+				211BABD51FB06A9800535840 /* Other Custom Views */,
+				211BABD41FB06A7900535840 /* Database */,
+				215D2E2A1FB22074009E78EA /* Other */,
+				215D2E2B1FB22885009E78EA /* Images */,
+				21D1D9F21FAB45AF003E77F3 /* Supported Files */,
+			);
+			path = "Discount Card Manager";
+			sourceTree = "<group>";
+		};
+		21D1D9F21FAB45AF003E77F3 /* Supported Files */ = {
+			isa = PBXGroup;
+			children = (
+				21D1D9DD1FAB451C003E77F3 /* AppDelegate.swift */,
 				21D1D9E71FAB4528003E77F3 /* Assets.xcassets */,
 				21D1D9E91FAB4528003E77F3 /* LaunchScreen.storyboard */,
 				21D1D9EC1FAB452A003E77F3 /* Info.plist */,
-				21D1D9E41FAB4523003E77F3 /* Discount_Card_Manager.xcdatamodeld */,
 			);
-			path = "Discount Card Manager";
+			path = "Supported Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -126,7 +201,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21AAD3C71FB88AD3002BC433 /* questionMark.png in Resources */,
 				21D1D9EB1FAB4528003E77F3 /* LaunchScreen.storyboard in Resources */,
+				21AAD3C61FB88AD3002BC433 /* plusMark.png in Resources */,
 				21D1D9E81FAB4528003E77F3 /* Assets.xcassets in Resources */,
 				21D1D9E31FAB451F003E77F3 /* Main.storyboard in Resources */,
 			);
@@ -140,8 +217,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D1D9E61FAB4524003E77F3 /* Discount_Card_Manager.xcdatamodeld in Sources */,
-				21D1D9E01FAB451D003E77F3 /* ViewController.swift in Sources */,
+				21D1D9F61FAB4B55003E77F3 /* MainTableViewCell.swift in Sources */,
 				21D1D9DE1FAB451C003E77F3 /* AppDelegate.swift in Sources */,
+				215D2E291FB2206B009E78EA /* CardManager.swift in Sources */,
+				21E3EB4E1FB1D37D00A48F24 /* DetailTableVC.swift in Sources */,
+				21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */,
+				21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */,
+				21E3EB4A1FB1CAEF00A48F24 /* Tag.swift in Sources */,
+				211BABCC1FB0675600535840 /* ButtonView.swift in Sources */,
+				215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,7 +364,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44VNSS7L2X;
-				INFOPLIST_FILE = "Discount Card Manager/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Discount Card Manager/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "isidar.Discount-Card-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,7 +379,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 44VNSS7L2X;
-				INFOPLIST_FILE = "Discount Card Manager/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Discount Card Manager/Supported Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "isidar.Discount-Card-Manager";
 				PRODUCT_NAME = "$(TARGET_NAME)";
