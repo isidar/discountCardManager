@@ -11,33 +11,58 @@ import CoreData
 
 class CardManager: NSObject {
     static let colorFilters = ["None", "Red", "Green", "Blue", "Yellow", "Black"]
-    static var currentColor = "None"
     
-    /// need to be tested
-    static func add(name: UITextField?, frontImage: UIImageView?, backImage: UIImageView?, barcodeImage: UIImageView?, tags: UITextView?, logo: UIImageView?, description: UITextView?){
+    /// Adds new item in DB
+    static func add(name: UITextField?, frontImage: UIImageView?, backImage: UIImageView?, barcodeImage: UIImageView?, color: UIPickerView?, tags: UITextView?, logo: UIImageView?, description: UITextView?){
         let context = AppDelegate.viewContext
         let card = Card(context: context)
         
         card.cardName = name?.text
-        // refactor if needed (maybe "guard" statement)
         card.frontImage = addURLFor(frontImage?.image)
         card.backImage = addURLFor(backImage?.image)
         card.barcode = addURLFor(barcodeImage?.image)
-        // * * * *
-        card.colorFilter = currentColor
-        card.tags = createSetOfTag(from: tags, context: card.managedObjectContext)
+        let colorIndex = (color?.selectedRow(inComponent: 0))!
+        let colorName = colorFilters[colorIndex]
+        card.colorFilter = colorName
+        card.tags = tags?.text
         card.logo = addURLFor(logo?.image)
         card.cardDescription = description?.text
         
         save(context: card.managedObjectContext)
     }
     
-    /// need to be complited
-    static func edit(name: UITextField?, frontImage: UIImageView?, backImage: UIImageView?, barcodeImage: UIImageView?, tags: UITextView?, logo: UIImageView?, description: UITextView?){
+    /// Edits particular item in DB
+    static func edit(keyField: String, name: UITextField?, frontImage: UIImageView?, backImage: UIImageView?, barcodeImage: UIImageView?, color: UIPickerView?, tags: UITextView?, logo: UIImageView?, description: UITextView?) throws{
         
+        let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
-        request.predicate = NSPredicate(format: "cardName = %@", (name?.text)!)
+        request.predicate = NSPredicate(format: "cardName = %@", keyField)
         
+        do{
+            let cards = try context.fetch(request)
+            let card = cards[0]
+            
+            card.cardName = name?.text
+            card.frontImage = addURLFor(frontImage?.image)
+            card.backImage = addURLFor(backImage?.image)
+            card.barcode = addURLFor(barcodeImage?.image)
+            let colorIndex = (color?.selectedRow(inComponent: 0))!
+            let colorName = colorFilters[colorIndex]
+            card.colorFilter = colorName
+            card.tags = tags?.text
+            card.logo = addURLFor(logo?.image)
+            card.cardDescription = description?.text
+            
+            save(context: card.managedObjectContext)
+        } catch{
+            throw error
+        }
+    }
+    
+    /// need to be tested - Deletes particular item in DB
+    static func delete(keyField: String){
+
+
     }
     
     static func loadAllDataTo(_ cards: inout [Card]?){
@@ -49,6 +74,30 @@ class CardManager: NSObject {
         cards = try? context.fetch(request)
     }
     
+    static func fetchCard(_ card: String) -> Card?{
+        let context = AppDelegate.viewContext
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "cardName = %@", card)
+        
+        if let cards = try? context.fetch(request), !cards.isEmpty{
+            return cards[0]
+        }
+        return nil
+    }
+    
+    static func fetchCardsBy(color: String) -> [Card]?{
+        let context = AppDelegate.viewContext
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "colorFilter = %@", color)
+        
+        if let cards = try? context.fetch(request), !cards.isEmpty{
+            return cards
+        }
+        return nil
+    }
+    
     /// need to be tested
     static private func addURLFor (_ image: UIImage! )  -> String? {
         if image == nil || image == UIImage(contentsOfFile: "questionMark.png"){
@@ -56,11 +105,11 @@ class CardManager: NSObject {
         }
         
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-        let uniqueName = UUID().uuidString + ".jpg"
-        // Change extension if you want to save as PNG
+        let uniqueName = UUID().uuidString + ".png"
+        // Change extension if you want to save as JPG/PNG/etc.
         let imageURL = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent(uniqueName))
         
-        // probably is not required
+        // probably is not required (just for testing)
         let imageString = String(describing: imageURL)
         print (uniqueName == imageString)
         // * * * *
@@ -92,6 +141,17 @@ class CardManager: NSObject {
         return nil
     }
     
+    static func isNameAlreadyExist(name: String, in context: NSManagedObjectContext) -> Bool?{
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "cardName = %@", name)
+        if let result = try? context.fetch(request){
+            return !result.isEmpty
+        }
+        
+        return nil
+    }
+    
     /// need to be tested
     static func generateBarcode(from code: String) -> UIImage? {
         let data = code.data(using: .ascii)
@@ -102,6 +162,7 @@ class CardManager: NSObject {
         return UIImage(ciImage: (filter?.outputImage)!)
     }
     
+    /*
     /// need to be tested
     static private func createSetOfTag(from tags: UITextView?, context: NSManagedObjectContext?) -> NSSet? {
         if let textViewText = tags?.text {
@@ -123,6 +184,7 @@ class CardManager: NSObject {
             return nil
         }
     }
+ */
     
     /// Saves a passed context (just context.save)
     static private func save(context: NSManagedObjectContext?){

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		211BABCC1FB0675600535840 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BABCB1FB0675600535840 /* ButtonView.swift */; };
+		2128D4231FB9DEAE00691979 /* MyImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2128D4221FB9DEAE00691979 /* MyImage.swift */; };
 		215D2E291FB2206B009E78EA /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D2E281FB2206B009E78EA /* CardManager.swift */; };
 		215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54B41FB32507003D7D6D /* Custom Features.swift */; };
 		21AAD3C61FB88AD3002BC433 /* plusMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 21AAD3C41FB88AD2002BC433 /* plusMark.png */; };
@@ -19,13 +20,13 @@
 		21D1D9EB1FAB4528003E77F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D1D9E91FAB4528003E77F3 /* LaunchScreen.storyboard */; };
 		21D1D9F61FAB4B55003E77F3 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */; };
 		21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB471FB1CABB00A48F24 /* Card.swift */; };
-		21E3EB4A1FB1CAEF00A48F24 /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB491FB1CAEF00A48F24 /* Tag.swift */; };
 		21E3EB4E1FB1D37D00A48F24 /* DetailTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4D1FB1D37D00A48F24 /* DetailTableVC.swift */; };
 		21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		211BABCB1FB0675600535840 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
+		2128D4221FB9DEAE00691979 /* MyImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImage.swift; sourceTree = "<group>"; };
 		215D2E281FB2206B009E78EA /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		215D54B41FB32507003D7D6D /* Custom Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Features.swift"; sourceTree = "<group>"; };
 		21AAD3C41FB88AD2002BC433 /* plusMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusMark.png; sourceTree = "<group>"; };
@@ -39,7 +40,6 @@
 		21D1D9EC1FAB452A003E77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		21E3EB471FB1CABB00A48F24 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		21E3EB491FB1CAEF00A48F24 /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		21E3EB4D1FB1D37D00A48F24 /* DetailTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTableVC.swift; sourceTree = "<group>"; };
 		21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,7 +69,6 @@
 			children = (
 				21D1D9E41FAB4523003E77F3 /* Discount_Card_Manager.xcdatamodeld */,
 				21E3EB471FB1CABB00A48F24 /* Card.swift */,
-				21E3EB491FB1CAEF00A48F24 /* Tag.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -79,6 +78,7 @@
 			children = (
 				21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */,
 				211BABCB1FB0675600535840 /* ButtonView.swift */,
+				2128D4221FB9DEAE00691979 /* MyImage.swift */,
 			);
 			path = "Other Custom Views";
 			sourceTree = "<group>";
@@ -223,7 +223,7 @@
 				21E3EB4E1FB1D37D00A48F24 /* DetailTableVC.swift in Sources */,
 				21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */,
 				21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */,
-				21E3EB4A1FB1CAEF00A48F24 /* Tag.swift in Sources */,
+				2128D4231FB9DEAE00691979 /* MyImage.swift in Sources */,
 				211BABCC1FB0675600535840 /* ButtonView.swift in Sources */,
 				215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */,
 			);

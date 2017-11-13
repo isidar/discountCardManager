@@ -10,14 +10,12 @@ import UIKit
 import Foundation
 
 class DetailTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    var selectedRow: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        loadDataIfNeeded()
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,10 +24,7 @@ class DetailTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     // MARK: - Outlets
-    
-    // probably is not needed
-    @IBOutlet weak var navigationBar: UINavigationItem!
-    // * * * *
+
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var backImageView: UIImageView!
@@ -41,34 +36,77 @@ class DetailTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDa
     @IBOutlet weak var descriptionTextView: UITextView!
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
-        let regEx = NSRegularExpression(pattern: "^\s+$")
-        let numberOfMatches = regEx.numberOfMatches(in: nameTextField.text)
+        let title = navigationItem.title!
+        let name = nameTextField.text ?? ""
         
-        if numberOfMatches > 0 || nameTextField.text == "" {
-            let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: .Alert)
-            // alert.addAction(UIAlertAction(title: "Click", style: .Default, handler: nil))
-            self.presentViewController(alert, animated: true, completion: nil)
-            
+        if name.containsOnlySpaces {
+            Features.showAlert(on: self, message: "Fill the \"Card Name\" field!")
             return
         }
         
-        switch navigationItem.title! {
+        switch title{
         case "New Card":
+            if CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
+                Features.showAlert(on: self, message: "This name already exist!")
+                return
+            }
             CardManager.add(
-                name: nameTextField, frontImage: frontImageView, backImage: backImageView, barcodeImage: barcodeImageView, tags: tagsTextView, logo: logoImageView, description: descriptionTextView
+                name: nameTextField, frontImage: frontImageView, backImage: backImageView, barcodeImage: barcodeImageView, color: colorPickerView, tags: tagsTextView, logo: logoImageView, description: descriptionTextView
             )
         default:
-            //CardManager.edit(name: <#T##UITextField?#>, frontImage: <#T##UIImageView?#>, backImage: <#T##UIImageView?#>, barcodeImage: <#T##UIImageView?#>, tags: <#T##UITextView?#>, logo: <#T##UIImageView?#>, description: <#T##UITextView?#>)
+            if name != title && CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
+                Features.showAlert(on: self, message: "This name already exist!")
+                return
+            }
+            do{
+                try CardManager.edit(keyField: title, name: nameTextField, frontImage: frontImageView, backImage: backImageView, barcodeImage: barcodeImageView, color: colorPickerView, tags: tagsTextView, logo: logoImageView, description: descriptionTextView)
+            } catch{
+                Features.showAlert(on: self, message: "Cannot edit card!")
+            }
+            
             break
         }
         
-        // need to close current VC
+        // remove current VC
+        if let nav = self.navigationController {
+            var stack = nav.viewControllers
+            
+            updateAllUIOf(viewControllers: stack)
+            stack.removeLast()
+            nav.setViewControllers(stack, animated: true)
+        }
     }
     
+    private func loadDataIfNeeded(){
+        if let title = navigationItem.title, title != "New Card"{
+            if let card = CardManager.fetchCard(title){
+                let defaultImage = UIImage(contentsOfFile: "questionMark.png")
+                // let defaultImage = UIImage(named: "questionMark.png")
+                
+                nameTextField.text = card.cardName
+                frontImageView.image = CardManager.loadImageFromPath(card.frontImage) ?? defaultImage
+                backImageView.image = CardManager.loadImageFromPath(card.backImage) ?? defaultImage
+                barcodeImageView.image = CardManager.loadImageFromPath(card.barcode) ?? defaultImage
+                
+                if let pickedColorIndex = CardManager.colorFilters.index(of: card.colorFilter!){
+                    colorPickerView.selectRow(pickedColorIndex, inComponent: 0, animated: true)
+                }
+                tagsTextView.text = card.tags
+                logoImageView.image = CardManager.loadImageFromPath(card.logo) ?? defaultImage
+                descriptionTextView.text = card.cardDescription
+            }
+        }
+    }
     
-    
+    private func updateAllUIOf(viewControllers: [UIViewController]){
+        for vc in viewControllers{
+            vc.viewDidLoad()
+        }
+    }
+}
+
+extension DetailTableVC{
     // MARK: - PickerView Data Source
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -79,53 +117,4 @@ class DetailTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDa
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return CardManager.colorFilters.count
     }
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        CardManager.currentColor = CardManager.colorFilters[row]
-    }
-    
-    
-    // MARK: - TableView Data Source
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    /*
-     // MARK: - Navigation
-     
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     
-     }
-     */
 }
