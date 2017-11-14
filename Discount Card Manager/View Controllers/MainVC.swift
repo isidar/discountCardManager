@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     // update that array to display items in a-z sections
     var listOfCards: [Card]?
@@ -16,7 +16,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        CardManager.loadAllDataTo(&listOfCards)
+        listOfCards = CardManager.fetchAllData()
         updateUI()
     }
 
@@ -34,11 +34,7 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBAction func filterCards(_ sender: ButtonStyle) {
         if let color = sender.titleLabel?.text{
-            switch color{
-            case "All": CardManager.loadAllDataTo(&listOfCards)
-            default: listOfCards = CardManager.fetchCardsBy(color: color)
-            }
-            
+            listOfCards = color == "All" ? CardManager.fetchAllData() : CardManager.fetchCardsBy(color: color)
             updateUI()
         }
     }
@@ -49,15 +45,26 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
         if let identifier = segue.identifier {
             switch identifier{
             case "New Card":
-                if let vc = segue.destination as? DetailTableVC{
+                if let vc = segue.destination as? EditTableVC{
                     vc.navigationItem.title = "New Card"
                 }
-            case "Show Info":
-                if let vc = segue.destination as? DetailTableVC{
-                    let cell = sender as? MainTableViewCell
-                    
-                    vc.navigationItem.title = cell?.cardNameLabel.text
+            case "Edit":
+                if let vc = segue.destination as? EditTableVC{
+                    if let cell = sender as? MainTableViewCell{
+                        if let cardName = cell.cardNameLabel.text {
+                            vc.navigationItem.title = cardName
+                        }
+                    }
                 }
+            case "Show Info":
+                if let vc = segue.destination as? ShowInfoVC{
+                    if let cell = sender as? MainTableViewCell{
+                        if let cardName = cell.cardNameLabel.text{
+                            vc.navigationItem.title = cardName
+                        }
+                    }
+                }
+
             default: break
             }
         }
@@ -67,6 +74,16 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
 
 extension MainVC{
+    
+    // MARK: - SearchBarDelegate methods
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        listOfCards = searchText.isEmpty ?
+            CardManager.fetchAllData() :
+            CardManager.fetchCardsContaining(name: searchText, tags: searchText)
+        
+        updateUI()
+    }
+    
     
     // MARK: - TableView Data Source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -92,13 +109,87 @@ extension MainVC{
             
             if let cardCell = cell as? MainTableViewCell{
                 cardCell.cardNameLabel.text = card.cardName
-                cardCell.logoImageView.image = CardManager.loadImageFromPath(card.logo ?? card.frontImage) ??
-                    UIImage(contentsOfFile: "questionMark.png")
+                
+                if let image = CardManager.loadImageFromPath(card.logo ?? card.frontImage){
+                    cardCell.logoImageView.contentMode = .scaleToFill
+                    cardCell.logoImageView.image = image
+                } else{
+                    cardCell.logoImageView.contentMode = .scaleAspectFit
+                    cardCell.logoImageView.image = UIImage(contentsOfFile: "questionMark.png")
+                    
+                    // change all contentsOfFile: "questionMark.png" !!!!!! to
+                    // ... = cardCell.logoImageView.defaultIamge
+                }
                 // ... = card.cardDescription
             }
             
             return cell
+        } else {
+            return tableView.dequeueReusableCell(withIdentifier: "Empty Card", for: indexPath)
         }
-        return tableView.dequeueReusableCell(withIdentifier: "Empty Card", for: indexPath)
     }
+
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        if let cell = tableView.cellForRow(at: indexPath) as? MainTableViewCell, cell.cardNameLabel.text != nil{
+            return true
+        }
+        return false
+    }
+
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        if let cell = tableView.cellForRow(at: indexPath) as? MainTableViewCell{
+            if let cardName = cell.cardNameLabel.text{
+                let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
+                    
+                    // it's not segueing !!!!! (?) ?? performSegue
+                    let segue = UIStoryboardSegue(identifier: "Edit", source: self, destination: EditTableVC())
+                    self.prepare(for: segue, sender: cell)
+                }
+                editAction.backgroundColor = .blue
+                
+                let deleteAction = UITableViewRowAction(style: .normal, title: "Delete") { (rowAction, indexPath) in
+                    do{
+                        try CardManager.delete(keyField: cardName)
+                        self.listOfCards = CardManager.fetchAllData()
+                        
+                        if indexPath.row == 0{
+                            self.updateUI()
+                        } else{
+                            tableView.deleteRows(at: [indexPath], with: .automatic)
+                        }
+                    } catch{
+                        Features.showAlert(on: self, message: "Cannot delete this card!")
+                    }
+                }
+                deleteAction.backgroundColor = .red
+                
+                return [deleteAction, editAction]
+            }
+        }
+        return nil
+    }
+    
+    /*
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? MainTableViewCell{
+            if let cardName = cell.cardNameLabel.text{
+                if editingStyle == .delete{
+                    do{
+                        try CardManager.delete(keyField: cardName)
+                        listOfCards = CardManager.fetchAllData()
+                        
+                        if indexPath.row == 0{
+                            updateUI()
+                        } else{
+                            tableView.deleteRows(at: [indexPath], with: .automatic)
+                        }
+                    } catch{
+                        Features.showAlert(on: self, message: "Cannot delete this card!")
+                    }
+                }
+            }
+        }
+    }
+    */
 }

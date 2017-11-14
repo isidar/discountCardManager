@@ -44,4 +44,10 @@ struct Features{
         }))
         vc.present(alert, animated: true, completion: nil)
     }
+    
+    enum Direction {
+        case left
+        case right
+    }
 }
+

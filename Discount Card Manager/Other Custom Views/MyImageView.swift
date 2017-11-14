@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class MyImage: UIImageView {
+class MyImageView: UIImageView {
     @IBInspectable
     var borderColor: UIColor? {
         get{
@@ -36,4 +36,15 @@ class MyImage: UIImageView {
             layer.borderWidth = newValue
         }
     }
+
+    @IBInspectable
+    var defaultImage: UIImage? = nil
+    /*
+    override var image: UIImage?{
+        didSet{
+            if image == nil{
+                image = defaultImage
+            }
+        }
+    }*/
 }

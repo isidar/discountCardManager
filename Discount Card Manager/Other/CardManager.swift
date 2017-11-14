@@ -36,10 +36,13 @@ class CardManager: NSObject {
         
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
+        
         request.predicate = NSPredicate(format: "cardName = %@", keyField)
         
         do{
             let cards = try context.fetch(request)
+            if cards.isEmpty { return }
+            
             let card = cards[0]
             
             card.cardName = name?.text
@@ -60,18 +63,33 @@ class CardManager: NSObject {
     }
     
     /// need to be tested - Deletes particular item in DB
-    static func delete(keyField: String){
-
-
+    static func delete(keyField: String) throws{
+        let context = AppDelegate.viewContext
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "cardName = %@", keyField)
+        
+        do{
+            let cards = try context.fetch(request)
+            if cards.isEmpty { return }
+            
+            context.delete(cards[0])
+            
+            save(context: context)
+        } catch{
+            throw error
+        }
     }
     
-    static func loadAllDataTo(_ cards: inout [Card]?){
+    // MARK: - Fetch methods
+    
+    static func fetchAllData() -> [Card]?{
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
         request.sortDescriptors = [NSSortDescriptor(key: "cardName", ascending: true)]
         
-        cards = try? context.fetch(request)
+        return try? context.fetch(request)
     }
     
     static func fetchCard(_ card: String) -> Card?{
@@ -86,10 +104,24 @@ class CardManager: NSObject {
         return nil
     }
     
+    static func fetchCardsContaining(name: String, tags: String) -> [Card]?{
+        let context = AppDelegate.viewContext
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        
+        request.predicate = NSPredicate(format: "(cardName contains[c] %@) || (tags contains[c] %@)", name, tags)
+        request.sortDescriptors = [NSSortDescriptor(key: "cardName", ascending: true)]
+        
+        if let cards = try? context.fetch(request), !cards.isEmpty{
+            return cards
+        }
+        return nil
+    }
+    
     static func fetchCardsBy(color: String) -> [Card]?{
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
+        request.sortDescriptors = [NSSortDescriptor(key: "cardName", ascending: true)]
         request.predicate = NSPredicate(format: "colorFilter = %@", color)
         
         if let cards = try? context.fetch(request), !cards.isEmpty{

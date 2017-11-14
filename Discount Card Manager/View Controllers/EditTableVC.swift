@@ -9,10 +9,7 @@
 import UIKit
 import Foundation
 
-class DetailTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
-    
-    var selectedRow: Int = 0
-    
+class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataIfNeeded()
@@ -24,7 +21,7 @@ class DetailTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDa
     }
     
     // MARK: - Outlets
-
+    
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var frontImageView: UIImageView!
     @IBOutlet weak var backImageView: UIImageView!
@@ -105,7 +102,7 @@ class DetailTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDa
     }
 }
 
-extension DetailTableVC{
+extension EditTableVC{
     // MARK: - PickerView Data Source
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

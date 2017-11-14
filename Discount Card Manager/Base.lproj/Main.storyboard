@@ -22,6 +22,9 @@
                             <searchBar contentMode="redraw" placeholder="Card name/tags" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-zx-Hf9">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="K6C-G4-9Do" id="Wub-So-0Y8"/>
+                                </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Fb3-ov-2DH">
                                 <rect key="frame" x="0.0" y="120" width="375" height="491"/>
@@ -34,7 +37,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-AH-ZrM" customClass="MyImage" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-AH-ZrM" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                     <rect key="frame" x="19" y="4" width="51" height="52"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -43,6 +46,7 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6V-Hx-pzz">
@@ -77,7 +81,7 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="j6V-Hx-pzz" id="AA7-Yh-erp"/>
                                             <outlet property="logoImageView" destination="zIW-AH-ZrM" id="Heh-iR-GcD"/>
-                                            <segue destination="Yq3-7Y-sqt" kind="show" identifier="Show Info" id="QdG-M5-eCZ"/>
+                                            <segue destination="Evd-hp-MZm" kind="show" identifier="Show Info" id="vWN-by-Awb"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Empty Card" rowHeight="60" id="88c-6F-RpS">
@@ -87,7 +91,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="V94-9J-Qk8" userLabel="Plus Image View" customClass="MyImage" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="V94-9J-Qk8" userLabel="Plus Image View" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                     <rect key="frame" x="19" y="4" width="51" height="52"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -99,7 +103,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="click here to add your card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ddH-od-YhV" userLabel="Hint Label">
-                                                    <rect key="frame" x="78" y="14.5" width="259.5" height="30"/>
+                                                    <rect key="frame" x="78" y="14.5" width="289" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -113,11 +117,12 @@
                                                 <constraint firstItem="V94-9J-Qk8" firstAttribute="leading" secondItem="a8E-zd-6qh" secondAttribute="leading" constant="19" id="lMI-Cr-YjK"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="ddH-od-YhV" secondAttribute="bottom" constant="7" id="mVX-il-rvO"/>
                                                 <constraint firstItem="ddH-od-YhV" firstAttribute="leading" secondItem="V94-9J-Qk8" secondAttribute="trailing" constant="8" id="uWM-ff-kO8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ddH-od-YhV" secondAttribute="trailing" id="zIJ-Fc-n3g"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <segue destination="Yq3-7Y-sqt" kind="show" identifier="New Card" id="aEl-lb-HxE"/>
+                                            <segue destination="Yq3-7Y-sqt" kind="show" identifier="New Card" id="wpN-fJ-0ou"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -285,7 +290,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="hqG-QD-26u"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="87v-GY-FcD">
                             <connections>
-                                <segue destination="Yq3-7Y-sqt" kind="show" identifier="New Card" id="bo3-mR-QQg"/>
+                                <segue destination="Yq3-7Y-sqt" kind="show" identifier="New Card" id="kOO-0U-CuB"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -295,12 +300,85 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LsQ-JP-th4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2524" y="-734.48275862068976"/>
+            <point key="canvasLocation" x="-2537" y="-736"/>
         </scene>
-        <!--New Card / Card Info-->
+        <!--Card Name-->
+        <scene sceneID="MX8-yk-Mnn">
+            <objects>
+                <viewController id="Evd-hp-MZm" customClass="ShowInfoVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uut-ES-mK8">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbn-K0-t7u">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xeB-8f-rnk">
+                                        <rect key="frame" x="0.0" y="0.0" width="1125" height="603"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mHs-Ej-MEw" userLabel="Front Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Gu-hC-L5w" userLabel="Back Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <rect key="frame" x="375" y="0.0" width="375" height="603"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="164-HR-TJC" userLabel="Barcode Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <rect key="frame" x="750" y="0.0" width="375" height="603"/>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="5Gu-hC-L5w" firstAttribute="width" secondItem="gbn-K0-t7u" secondAttribute="width" id="6ko-md-2id"/>
+                                    <constraint firstItem="xeB-8f-rnk" firstAttribute="leading" secondItem="gbn-K0-t7u" secondAttribute="leading" id="OsB-UI-mfl"/>
+                                    <constraint firstItem="xeB-8f-rnk" firstAttribute="top" secondItem="gbn-K0-t7u" secondAttribute="top" id="Ujs-wo-BWf"/>
+                                    <constraint firstAttribute="trailing" secondItem="xeB-8f-rnk" secondAttribute="trailing" id="bCS-3R-egq"/>
+                                    <constraint firstItem="164-HR-TJC" firstAttribute="width" secondItem="gbn-K0-t7u" secondAttribute="width" id="ia0-2L-hIB"/>
+                                    <constraint firstAttribute="bottom" secondItem="xeB-8f-rnk" secondAttribute="bottom" id="lzz-ka-b3Q"/>
+                                    <constraint firstItem="mHs-Ej-MEw" firstAttribute="width" secondItem="gbn-K0-t7u" secondAttribute="width" id="okv-EI-Mvk"/>
+                                    <constraint firstItem="xeB-8f-rnk" firstAttribute="height" secondItem="gbn-K0-t7u" secondAttribute="height" id="qbq-sQ-0H5"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gbn-K0-t7u" firstAttribute="bottom" secondItem="jvJ-tm-trV" secondAttribute="bottom" id="AP5-WE-TgY"/>
+                            <constraint firstItem="gbn-K0-t7u" firstAttribute="leading" secondItem="jvJ-tm-trV" secondAttribute="leading" id="EU9-3I-zm2"/>
+                            <constraint firstItem="gbn-K0-t7u" firstAttribute="trailing" secondItem="jvJ-tm-trV" secondAttribute="trailing" id="Huc-Tg-F1M"/>
+                            <constraint firstItem="gbn-K0-t7u" firstAttribute="top" secondItem="jvJ-tm-trV" secondAttribute="top" id="oLu-S5-Wbh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jvJ-tm-trV"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Card Name" id="Dsm-7t-WTV">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="e2R-pc-Pot">
+                            <connections>
+                                <segue destination="Yq3-7Y-sqt" kind="show" identifier="Edit" id="vNc-ds-Dqx"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="backImageView" destination="5Gu-hC-L5w" id="i3m-hp-G9c"/>
+                        <outlet property="barcodeImageView" destination="164-HR-TJC" id="jyu-J2-CDe"/>
+                        <outlet property="frontImageView" destination="mHs-Ej-MEw" id="03q-1u-9hH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ai9-rF-f3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1686" y="-736"/>
+        </scene>
+        <!--New Card / Edit-->
         <scene sceneID="mEo-vH-Q6D">
             <objects>
-                <tableViewController id="Yq3-7Y-sqt" customClass="DetailTableVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Yq3-7Y-sqt" customClass="EditTableVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5bv-3l-Zj7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -341,7 +419,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-yL-MJg" customClass="MyImage" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-yL-MJg" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                     <rect key="frame" x="19" y="2" width="337" height="144"/>
                                                     <gestureRecognizers/>
                                                     <userDefinedRuntimeAttributes>
@@ -351,6 +429,7 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
@@ -373,7 +452,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-0m-WpA" customClass="MyImage" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-0m-WpA" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                     <rect key="frame" x="19" y="2" width="337" height="144"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -382,6 +461,7 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
@@ -410,14 +490,14 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-tE-L6j" userLabel="Barcode Stack">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="43.5"/>
                                                             <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Barcode number" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-9K-9qZ">
-                                                                    <rect key="frame" x="0.0" y="7" width="263" height="30"/>
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Barcode number" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-9K-9qZ">
+                                                                    <rect key="frame" x="0.0" y="7" width="253" height="30"/>
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <textInputTraits key="textInputTraits"/>
                                                                 </textField>
-                                                                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-uD-f9x" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="273" y="7" width="64" height="30"/>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-uD-f9x" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="263" y="7" width="74" height="30"/>
                                                                     <state key="normal" title="Generate"/>
                                                                     <userDefinedRuntimeAttributes>
                                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -429,8 +509,11 @@
                                                                     </userDefinedRuntimeAttributes>
                                                                 </button>
                                                             </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="9IJ-9K-9qZ" firstAttribute="width" secondItem="a0Y-tE-L6j" secondAttribute="width" multiplier="0.75" id="9xC-zo-opP"/>
+                                                            </constraints>
                                                         </stackView>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-iA-LqE" customClass="MyImage" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-iA-LqE" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="48.5" width="337" height="145.5"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -439,10 +522,12 @@
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                     <real key="value" value="1"/>
                                                                 </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="WpH-iA-LqE" firstAttribute="top" secondItem="a0Y-tE-L6j" secondAttribute="bottom" constant="5" id="Lab-6e-HYD"/>
                                                         <constraint firstItem="WpH-iA-LqE" firstAttribute="height" secondItem="gZS-ss-ZGE" secondAttribute="height" multiplier="0.75" id="caK-nc-CN4"/>
                                                     </constraints>
                                                 </stackView>
@@ -533,7 +618,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-eD-Tsh" customClass="MyImage" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-eD-Tsh" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                     <rect key="frame" x="134" y="11" width="106" height="56"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -542,6 +627,7 @@
                                                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                             </subviews>
@@ -587,7 +673,7 @@
                             <outlet property="delegate" destination="Yq3-7Y-sqt" id="iee-Sx-zMO"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="New Card / Card Info" id="CCn-MV-ue9">
+                    <navigationItem key="navigationItem" title="New Card / Edit" id="CCn-MV-ue9">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="bR4-bO-pAp">
                             <connections>
                                 <action selector="doneButton:" destination="Yq3-7Y-sqt" id="66R-f9-1x3"/>
@@ -609,7 +695,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRU-tL-flF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1697" y="-459"/>
+            <point key="canvasLocation" x="-2510" y="318"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rWU-7L-xKc">
@@ -635,6 +721,6 @@
         <image name="questionMark.png" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="bo3-mR-QQg"/>
+        <segue reference="wpN-fJ-0ou"/>
     </inferredMetricsTieBreakers>
 </document>
