@@ -270,7 +270,6 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7h1-zx-Hf9" firstAttribute="top" secondItem="dQM-1x-9aG" secondAttribute="top" id="4Uu-wl-a03"/>
                             <constraint firstItem="iLe-3T-plU" firstAttribute="leading" secondItem="dQM-1x-9aG" secondAttribute="leading" id="9um-46-ZrU"/>
@@ -296,6 +295,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableViewOutlet" destination="Fb3-ov-2DH" id="7Wz-mF-iMO"/>
+                        <segue destination="Yq3-7Y-sqt" kind="show" identifier="Edit" id="AF6-1O-RX1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LsQ-JP-th4" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -316,19 +316,19 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="xeB-8f-rnk">
                                         <rect key="frame" x="0.0" y="0.0" width="1125" height="603"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mHs-Ej-MEw" userLabel="Front Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mHs-Ej-MEw" userLabel="Front Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Gu-hC-L5w" userLabel="Back Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Gu-hC-L5w" userLabel="Back Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="375" y="0.0" width="375" height="603"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="164-HR-TJC" userLabel="Barcode Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="164-HR-TJC" userLabel="Barcode Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="750" y="0.0" width="375" height="603"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
@@ -379,10 +379,10 @@
         <scene sceneID="mEo-vH-Q6D">
             <objects>
                 <tableViewController id="Yq3-7Y-sqt" customClass="EditTableVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5bv-3l-Zj7">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5bv-3l-Zj7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.62423257659999998" green="0.40031504639999999" blue="0.44232821770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Card name" id="qgE-bm-bWd">
                                 <cells>
@@ -400,6 +400,7 @@
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="jQr-RZ-Dcn" secondAttribute="trailing" constant="19" id="RxX-qG-jI7"/>
                                                 <constraint firstAttribute="bottom" secondItem="jQr-RZ-Dcn" secondAttribute="bottom" constant="3.5" id="ghj-sg-fWU"/>
@@ -412,109 +413,19 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Front view" id="dze-qE-6Fk">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="SCG-ia-E9b">
-                                        <rect key="frame" x="0.0" y="100" width="375" height="150"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="SCG-ia-E9b">
+                                        <rect key="frame" x="0.0" y="100" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SCG-ia-E9b" id="mZQ-gz-8VU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-yL-MJg" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                    <rect key="frame" x="19" y="2" width="337" height="144"/>
-                                                    <gestureRecognizers/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="v1j-yL-MJg" firstAttribute="leading" secondItem="mZQ-gz-8VU" secondAttribute="leading" constant="19" id="0nx-eh-Zxm"/>
-                                                <constraint firstItem="v1j-yL-MJg" firstAttribute="top" secondItem="mZQ-gz-8VU" secondAttribute="top" constant="2" id="AeS-Pz-dM3"/>
-                                                <constraint firstAttribute="trailing" secondItem="v1j-yL-MJg" secondAttribute="trailing" constant="19" id="L8c-sl-6W7"/>
-                                                <constraint firstAttribute="bottom" secondItem="v1j-yL-MJg" secondAttribute="bottom" constant="3.5" id="UAU-54-NB4"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Back view" id="O8m-wF-Ase">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="Sa7-A9-xtd">
-                                        <rect key="frame" x="0.0" y="278" width="375" height="150"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sa7-A9-xtd" id="7Fn-9j-CPR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-0m-WpA" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                    <rect key="frame" x="19" y="2" width="337" height="144"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nc8-0m-WpA" firstAttribute="top" secondItem="7Fn-9j-CPR" secondAttribute="top" constant="2" id="Dk5-5x-Kai"/>
-                                                <constraint firstAttribute="bottom" secondItem="nc8-0m-WpA" secondAttribute="bottom" constant="3.5" id="I2G-7m-tmn"/>
-                                                <constraint firstItem="nc8-0m-WpA" firstAttribute="leading" secondItem="7Fn-9j-CPR" secondAttribute="leading" constant="19" id="L3H-eY-f5R"/>
-                                                <constraint firstAttribute="trailing" secondItem="nc8-0m-WpA" secondAttribute="trailing" constant="19" id="Oal-cU-Tli"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Barcode" id="HiT-ko-aFW">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="LIv-6g-U9W">
-                                        <rect key="frame" x="0.0" y="456" width="375" height="200"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LIv-6g-U9W" id="rK2-Y8-hBX">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gZS-ss-ZGE">
-                                                    <rect key="frame" x="19" y="2" width="337" height="194"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5UG-z3-Fiw">
+                                                    <rect key="frame" x="19" y="2.5" width="337" height="194"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-tE-L6j" userLabel="Barcode Stack">
-                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="43.5"/>
-                                                            <subviews>
-                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Barcode number" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-9K-9qZ">
-                                                                    <rect key="frame" x="0.0" y="7" width="253" height="30"/>
-                                                                    <nil key="textColor"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <textInputTraits key="textInputTraits"/>
-                                                                </textField>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-uD-f9x" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="263" y="7" width="74" height="30"/>
-                                                                    <state key="normal" title="Generate"/>
-                                                                    <userDefinedRuntimeAttributes>
-                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                            <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                            <real key="value" value="1"/>
-                                                                        </userDefinedRuntimeAttribute>
-                                                                    </userDefinedRuntimeAttributes>
-                                                                </button>
-                                                            </subviews>
-                                                            <constraints>
-                                                                <constraint firstItem="9IJ-9K-9qZ" firstAttribute="width" secondItem="a0Y-tE-L6j" secondAttribute="width" multiplier="0.75" id="9xC-zo-opP"/>
-                                                            </constraints>
-                                                        </stackView>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-iA-LqE" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="48.5" width="337" height="145.5"/>
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-yL-MJg" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="159"/>
+                                                            <gestureRecognizers/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                                     <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -525,18 +436,241 @@
                                                                 <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-qk-aDq" userLabel="Buttons">
+                                                            <rect key="frame" x="0.0" y="164" width="337" height="30"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-e4-zhx" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="168.5" height="30"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Clear image">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-Xf-XpL" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="168.5" y="0.0" width="168.5" height="30"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Choose image">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstItem="WpH-iA-LqE" firstAttribute="top" secondItem="a0Y-tE-L6j" secondAttribute="bottom" constant="5" id="Lab-6e-HYD"/>
-                                                        <constraint firstItem="WpH-iA-LqE" firstAttribute="height" secondItem="gZS-ss-ZGE" secondAttribute="height" multiplier="0.75" id="caK-nc-CN4"/>
+                                                        <constraint firstItem="n6s-qk-aDq" firstAttribute="top" secondItem="5UG-z3-Fiw" secondAttribute="top" constant="164" id="njS-wc-jUN"/>
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstItem="gZS-ss-ZGE" firstAttribute="leading" secondItem="rK2-Y8-hBX" secondAttribute="leading" constant="19" id="3Bt-PJ-6Mo"/>
-                                                <constraint firstAttribute="trailing" secondItem="gZS-ss-ZGE" secondAttribute="trailing" constant="19" id="Ns7-5j-ueX"/>
-                                                <constraint firstItem="gZS-ss-ZGE" firstAttribute="top" secondItem="rK2-Y8-hBX" secondAttribute="top" constant="2" id="ahQ-jq-eK7"/>
-                                                <constraint firstAttribute="bottom" secondItem="gZS-ss-ZGE" secondAttribute="bottom" constant="3.5" id="tgX-r9-p2o"/>
+                                                <constraint firstItem="5UG-z3-Fiw" firstAttribute="leading" secondItem="mZQ-gz-8VU" secondAttribute="leading" constant="19" id="RRQ-u0-oIJ"/>
+                                                <constraint firstAttribute="bottom" secondItem="5UG-z3-Fiw" secondAttribute="bottom" constant="3.5" id="bGh-Yz-JcO"/>
+                                                <constraint firstItem="5UG-z3-Fiw" firstAttribute="top" secondItem="mZQ-gz-8VU" secondAttribute="top" constant="2" id="deW-71-oUk"/>
+                                                <constraint firstAttribute="trailing" secondItem="5UG-z3-Fiw" secondAttribute="trailing" constant="19" id="keo-lM-zQ8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Back view" id="O8m-wF-Ase">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="Sa7-A9-xtd">
+                                        <rect key="frame" x="0.0" y="328" width="375" height="200"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sa7-A9-xtd" id="7Fn-9j-CPR">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-ce-QQG">
+                                                    <rect key="frame" x="19" y="2" width="337" height="194"/>
+                                                    <subviews>
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-0m-WpA" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="159"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Fk-DgU" userLabel="Buttons">
+                                                            <rect key="frame" x="0.0" y="164" width="337" height="30"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75z-J1-zyz" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="168.5" height="30"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Clear image">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2W-5R-wQe" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="168.5" y="0.0" width="168.5" height="30"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Choose image">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="MEs-Fk-DgU" firstAttribute="top" secondItem="gNN-ce-QQG" secondAttribute="top" constant="164" id="Ohr-TA-XOW"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="gNN-ce-QQG" secondAttribute="bottom" constant="3.5" id="CLv-Hz-1WJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="gNN-ce-QQG" secondAttribute="trailing" constant="19" id="MhY-Cy-xqO"/>
+                                                <constraint firstItem="gNN-ce-QQG" firstAttribute="leading" secondItem="7Fn-9j-CPR" secondAttribute="leading" constant="19" id="k2U-gV-a1R"/>
+                                                <constraint firstItem="gNN-ce-QQG" firstAttribute="top" secondItem="7Fn-9j-CPR" secondAttribute="top" constant="2" id="mbs-q9-v67"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Barcode" id="HiT-ko-aFW">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="250" id="LIv-6g-U9W">
+                                        <rect key="frame" x="0.0" y="556" width="375" height="250"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LIv-6g-U9W" id="rK2-Y8-hBX">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gZS-ss-ZGE">
+                                                    <rect key="frame" x="19" y="10" width="337" height="229.5"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-tE-L6j" userLabel="Barcode Stack">
+                                                            <rect key="frame" x="0.0" y="0.0" width="337" height="30"/>
+                                                            <subviews>
+                                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Barcode number" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="9IJ-9K-9qZ">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="253" height="30"/>
+                                                                    <nil key="textColor"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <textInputTraits key="textInputTraits"/>
+                                                                </textField>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-uD-f9x" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="263" y="0.0" width="74" height="30"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Generate">
+                                                                        <color key="titleColor" red="0.62423257659999998" green="0.40031504639999999" blue="0.44232821770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="9IJ-9K-9qZ" firstAttribute="width" secondItem="a0Y-tE-L6j" secondAttribute="width" multiplier="0.75" id="9xC-zo-opP"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-iA-LqE" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="35" width="337" height="160"/>
+                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="0.0"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zo3-g0-pKt" userLabel="Buttons">
+                                                            <rect key="frame" x="0.0" y="200" width="337" height="29.5"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NP9-cv-M1t" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="29.5"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Clear image">
+                                                                        <color key="titleColor" red="0.62423257659999998" green="0.40031504639999999" blue="0.44232821770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgo-82-qnV" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="169" y="0.0" width="168" height="29.5"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Choose image">
+                                                                        <color key="titleColor" red="0.62423257659999998" green="0.40031504639999999" blue="0.44232821770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="zo3-g0-pKt" firstAttribute="top" secondItem="a0Y-tE-L6j" secondAttribute="bottom" constant="170" id="DJU-9N-prw"/>
+                                                        <constraint firstItem="a0Y-tE-L6j" firstAttribute="height" secondItem="zo3-g0-pKt" secondAttribute="height" id="kgY-iy-yrW"/>
+                                                    </constraints>
+                                                </stackView>
+                                            </subviews>
+                                            <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="gZS-ss-ZGE" secondAttribute="bottom" constant="10" id="5fr-M7-JqD"/>
+                                                <constraint firstItem="gZS-ss-ZGE" firstAttribute="leading" secondItem="rK2-Y8-hBX" secondAttribute="leading" constant="19" id="GfX-sl-bTW"/>
+                                                <constraint firstItem="gZS-ss-ZGE" firstAttribute="top" secondItem="rK2-Y8-hBX" secondAttribute="top" constant="10" id="eaY-Q5-Za1"/>
+                                                <constraint firstAttribute="trailing" secondItem="gZS-ss-ZGE" secondAttribute="trailing" constant="19" id="kuS-C5-hsc"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -545,7 +679,7 @@
                             <tableViewSection headerTitle="Filter" id="W23-aY-rD4">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="lPb-dE-b3U">
-                                        <rect key="frame" x="0.0" y="684" width="375" height="120"/>
+                                        <rect key="frame" x="0.0" y="834" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lPb-dE-b3U" id="ezK-nH-49l">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
@@ -599,6 +733,7 @@
                                                     </constraints>
                                                 </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="RBK-mB-SYy" firstAttribute="leading" secondItem="ezK-nH-49l" secondAttribute="leading" constant="19" id="7eT-9s-Hh9"/>
                                                 <constraint firstAttribute="bottom" secondItem="RBK-mB-SYy" secondAttribute="bottom" constant="3.5" id="EZp-Wf-v0Y"/>
@@ -612,30 +747,74 @@
                             <tableViewSection headerTitle="Logo" id="1dU-un-yvG">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="cLz-Jn-dhC">
-                                        <rect key="frame" x="0.0" y="832" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="982" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cLz-Jn-dhC" id="Lj8-MJ-Bdt">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-eD-Tsh" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                    <rect key="frame" x="134" y="11" width="106" height="56"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                            <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                            <real key="value" value="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QI3-sl-Wro">
+                                                    <rect key="frame" x="19" y="2" width="337" height="74"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-eD-Tsh" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="147" height="74"/>
+                                                            <userDefinedRuntimeAttributes>
+                                                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                    <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                    <real key="value" value="1"/>
+                                                                </userDefinedRuntimeAttribute>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                            </userDefinedRuntimeAttributes>
+                                                        </imageView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Wo5-HJ-rVv" userLabel="Buttons">
+                                                            <rect key="frame" x="152" y="0.0" width="185" height="74"/>
+                                                            <subviews>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc1-la-Ojx" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="185" height="37"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Choose image">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meP-w1-YAw" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                    <rect key="frame" x="0.0" y="37" width="185" height="37"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                                    <state key="normal" title="Clear image">
+                                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                    </state>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                            <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="1"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </button>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                    <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="n4M-eD-Tsh" secondAttribute="trailing" constant="190" id="IKw-qe-6e0"/>
+                                                    </constraints>
+                                                </stackView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="n4M-eD-Tsh" secondAttribute="trailing" constant="127" id="Tpb-1v-gd8"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="n4M-eD-Tsh" secondAttribute="bottom" constant="4.5" id="b6E-Fp-yYk"/>
-                                                <constraint firstItem="n4M-eD-Tsh" firstAttribute="top" secondItem="Lj8-MJ-Bdt" secondAttribute="topMargin" constant="3" id="bCu-ua-Jcx"/>
-                                                <constraint firstItem="n4M-eD-Tsh" firstAttribute="leading" secondItem="Lj8-MJ-Bdt" secondAttribute="leadingMargin" constant="126" id="eaH-48-K6E"/>
+                                                <constraint firstAttribute="bottom" secondItem="QI3-sl-Wro" secondAttribute="bottom" constant="3.5" id="3UE-JD-P4b"/>
+                                                <constraint firstItem="QI3-sl-Wro" firstAttribute="leading" secondItem="Lj8-MJ-Bdt" secondAttribute="leading" constant="19" id="R4S-0Q-7rs"/>
+                                                <constraint firstAttribute="trailing" secondItem="QI3-sl-Wro" secondAttribute="trailing" constant="19" id="UY7-7Z-8vK"/>
+                                                <constraint firstItem="QI3-sl-Wro" firstAttribute="top" secondItem="Lj8-MJ-Bdt" secondAttribute="top" constant="2" id="p5E-NA-jZD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -644,7 +823,7 @@
                             <tableViewSection headerTitle="Description" id="Usx-bR-k5p">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="150" id="nmT-pP-lkE">
-                                        <rect key="frame" x="0.0" y="940" width="375" height="150"/>
+                                        <rect key="frame" x="0.0" y="1090" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nmT-pP-lkE" id="yr3-YZ-c5w">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
@@ -657,6 +836,7 @@
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
                                                 </textView>
                                             </subviews>
+                                            <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="ICQ-2y-qJd" firstAttribute="leading" secondItem="yr3-YZ-c5w" secondAttribute="leading" constant="19" id="6DZ-FH-0gJ"/>
                                                 <constraint firstAttribute="trailing" secondItem="ICQ-2y-qJd" secondAttribute="trailing" constant="19" id="K5f-Hz-kaa"/>
@@ -695,7 +875,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRU-tL-flF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2510" y="318"/>
+            <point key="canvasLocation" x="-2524" y="318"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rWU-7L-xKc">
@@ -721,6 +901,6 @@
         <image name="questionMark.png" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wpN-fJ-0ou"/>
+        <segue reference="AF6-1O-RX1"/>
     </inferredMetricsTieBreakers>
 </document>

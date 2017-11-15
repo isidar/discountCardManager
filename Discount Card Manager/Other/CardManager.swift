@@ -13,26 +13,24 @@ class CardManager: NSObject {
     static let colorFilters = ["None", "Red", "Green", "Blue", "Yellow", "Black"]
     
     /// Adds new item in DB
-    static func add(name: UITextField?, frontImage: UIImageView?, backImage: UIImageView?, barcodeImage: UIImageView?, color: UIPickerView?, tags: UITextView?, logo: UIImageView?, description: UITextView?){
+    static func add(name: String, frontImage: UIImage?, backImage: UIImage?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?){
         let context = AppDelegate.viewContext
         let card = Card(context: context)
         
-        card.cardName = name?.text
-        card.frontImage = addURLFor(frontImage?.image)
-        card.backImage = addURLFor(backImage?.image)
-        card.barcode = addURLFor(barcodeImage?.image)
-        let colorIndex = (color?.selectedRow(inComponent: 0))!
-        let colorName = colorFilters[colorIndex]
-        card.colorFilter = colorName
-        card.tags = tags?.text
-        card.logo = addURLFor(logo?.image)
-        card.cardDescription = description?.text
+        card.cardName = name
+        card.frontImage = addURLFor(frontImage)
+        card.backImage = addURLFor(backImage)
+        card.barcode = addURLFor(barcodeImage)
+        card.colorFilter = color
+        card.tags = tags
+        card.logo = addURLFor(logo)
+        card.cardDescription = description
         
         save(context: card.managedObjectContext)
     }
     
     /// Edits particular item in DB
-    static func edit(keyField: String, name: UITextField?, frontImage: UIImageView?, backImage: UIImageView?, barcodeImage: UIImageView?, color: UIPickerView?, tags: UITextView?, logo: UIImageView?, description: UITextView?) throws{
+    static func edit(keyField: String, name: String, frontImage: UIImage?, backImage: UIImage?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?) throws{
         
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
@@ -45,16 +43,14 @@ class CardManager: NSObject {
             
             let card = cards[0]
             
-            card.cardName = name?.text
-            card.frontImage = addURLFor(frontImage?.image)
-            card.backImage = addURLFor(backImage?.image)
-            card.barcode = addURLFor(barcodeImage?.image)
-            let colorIndex = (color?.selectedRow(inComponent: 0))!
-            let colorName = colorFilters[colorIndex]
-            card.colorFilter = colorName
-            card.tags = tags?.text
-            card.logo = addURLFor(logo?.image)
-            card.cardDescription = description?.text
+            card.cardName = name
+            card.frontImage = addURLFor(frontImage)
+            card.backImage = addURLFor(backImage)
+            card.barcode = addURLFor(barcodeImage)
+            card.colorFilter = color
+            card.tags = tags
+            card.logo = addURLFor(logo)
+            card.cardDescription = description
             
             save(context: card.managedObjectContext)
         } catch{
@@ -62,7 +58,7 @@ class CardManager: NSObject {
         }
     }
     
-    /// need to be tested - Deletes particular item in DB
+    /// Deletes particular item in DB
     static func delete(keyField: String) throws{
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
@@ -83,6 +79,7 @@ class CardManager: NSObject {
     
     // MARK: - Fetch methods
     
+    ///
     static func fetchAllData() -> [Card]?{
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
@@ -92,6 +89,7 @@ class CardManager: NSObject {
         return try? context.fetch(request)
     }
     
+    ///
     static func fetchCard(_ card: String) -> Card?{
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
@@ -104,6 +102,7 @@ class CardManager: NSObject {
         return nil
     }
     
+    ///
     static func fetchCardsContaining(name: String, tags: String) -> [Card]?{
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
@@ -117,6 +116,7 @@ class CardManager: NSObject {
         return nil
     }
     
+    /// Retrieves all cards with certain color
     static func fetchCardsBy(color: String) -> [Card]?{
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
@@ -130,9 +130,9 @@ class CardManager: NSObject {
         return nil
     }
     
-    /// need to be tested
+    /// Adds URL for given image
     static private func addURLFor (_ image: UIImage! )  -> String? {
-        if image == nil || image == UIImage(contentsOfFile: "questionMark.png"){
+        if image == nil{
             return nil
         }
         
@@ -155,12 +155,12 @@ class CardManager: NSObject {
         return uniqueName
     }
     
-    /// need to be tested
-    static func loadImageFromPath(_ path: String?) -> UIImage? {
+    /// Loads image from given path
+    static func loadImageFromPath(_ path: String!) -> UIImage? {
         if path == nil {return nil}
         
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
-        let imageURL = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent(path!))
+        let imageURL = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent(path))
         
         do {
             let imageData = try Data(contentsOf: imageURL)
@@ -173,6 +173,7 @@ class CardManager: NSObject {
         return nil
     }
     
+    /// Checks if given name already exist in certain context
     static func isNameAlreadyExist(name: String, in context: NSManagedObjectContext) -> Bool?{
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
@@ -184,7 +185,7 @@ class CardManager: NSObject {
         return nil
     }
     
-    /// need to be tested
+    /// need to be tested - Generates barcode image from given number as String
     static func generateBarcode(from code: String) -> UIImage? {
         let data = code.data(using: .ascii)
         let filter = CIFilter(name: "CICode128BarcodeGenerator")

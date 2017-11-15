@@ -20,7 +20,7 @@ class MainTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var logoImageView: MyImageView!
     @IBOutlet weak var cardNameLabel: UILabel!
     
     @IBAction func showDescription(_ sender: UIButton) {

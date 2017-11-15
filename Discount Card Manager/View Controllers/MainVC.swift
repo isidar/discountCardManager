@@ -34,7 +34,10 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISe
     
     @IBAction func filterCards(_ sender: ButtonStyle) {
         if let color = sender.titleLabel?.text{
-            listOfCards = color == "All" ? CardManager.fetchAllData() : CardManager.fetchCardsBy(color: color)
+            listOfCards = color == "All" ?
+                CardManager.fetchAllData() :
+                CardManager.fetchCardsBy(color: color)
+            
             updateUI()
         }
     }
@@ -115,7 +118,7 @@ extension MainVC{
                     cardCell.logoImageView.image = image
                 } else{
                     cardCell.logoImageView.contentMode = .scaleAspectFit
-                    cardCell.logoImageView.image = UIImage(contentsOfFile: "questionMark.png")
+                    cardCell.logoImageView.image = cardCell.logoImageView.defaultImage
                     
                     // change all contentsOfFile: "questionMark.png" !!!!!! to
                     // ... = cardCell.logoImageView.defaultIamge
@@ -141,10 +144,7 @@ extension MainVC{
         if let cell = tableView.cellForRow(at: indexPath) as? MainTableViewCell{
             if let cardName = cell.cardNameLabel.text{
                 let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (rowAction, indexPath) in
-                    
-                    // it's not segueing !!!!! (?) ?? performSegue
-                    let segue = UIStoryboardSegue(identifier: "Edit", source: self, destination: EditTableVC())
-                    self.prepare(for: segue, sender: cell)
+                    self.performSegue(withIdentifier: "Edit", sender: cell)
                 }
                 editAction.backgroundColor = .blue
                 
@@ -169,27 +169,4 @@ extension MainVC{
         }
         return nil
     }
-    
-    /*
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if let cell = tableView.cellForRow(at: indexPath) as? MainTableViewCell{
-            if let cardName = cell.cardNameLabel.text{
-                if editingStyle == .delete{
-                    do{
-                        try CardManager.delete(keyField: cardName)
-                        listOfCards = CardManager.fetchAllData()
-                        
-                        if indexPath.row == 0{
-                            updateUI()
-                        } else{
-                            tableView.deleteRows(at: [indexPath], with: .automatic)
-                        }
-                    } catch{
-                        Features.showAlert(on: self, message: "Cannot delete this card!")
-                    }
-                }
-            }
-        }
-    }
-    */
 }

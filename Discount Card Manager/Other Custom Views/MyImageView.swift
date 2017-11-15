@@ -46,5 +46,6 @@ class MyImageView: UIImageView {
                 image = defaultImage
             }
         }
-    }*/
+    }
+    */
 }

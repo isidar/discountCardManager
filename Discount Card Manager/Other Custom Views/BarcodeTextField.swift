@@ -10,8 +10,8 @@ import UIKit
 
 @IBDesignable
 class BarcodeTextField: UITextField {
-    @IBInspectable
+    /*@IBInspectable
     var maxCharacters: Int?
-    
+    */
     
 }

@@ -9,7 +9,6 @@
 import UIKit
 
 class ShowInfoVC: UIViewController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -27,35 +26,41 @@ class ShowInfoVC: UIViewController {
     private func loadData(){
         if let cardName = navigationItem.title{
             if let card = CardManager.fetchCard(cardName){
-                //let defaultImage = UIImage(contentsOfFile: "questionMark.png")!
-                //let defaultImage = UIImage(named: "questionMark.png")!
-                
-                let frontImage = CardManager.loadImageFromPath(card.frontImage) ?? frontImageView.defaultImage// ?? defaultImage
-                let backImage = CardManager.loadImageFromPath(card.backImage) ?? backImageView.defaultImage// ?? defaultImage
-                let barcodeImage = CardManager.loadImageFromPath(card.barcode) ?? barcodeImageView.defaultImage// ?? defaultImage
-                
-                if let image = frontImage, image.size.width > image.size.height{
-                    rotate(images: frontImageView, direction: .left)
-                }
-                if let image = backImage, image.size.width > image.size.height{
-                    rotate(images: backImageView, direction: .left)
-                }
-                if let image = barcodeImage, image.size.width > image.size.height{
-                    rotate(images: barcodeImageView, direction: .left)
+                // Front Image init
+                if let frontImage = CardManager.loadImageFromPath(card.frontImage){
+                    if frontImage.size.width > frontImage.size.height{
+                        rotate(images: frontImageView, direction: .left)
+                    }
+                    frontImageView.contentMode = .scaleToFill
+                    frontImageView.image = frontImage
+                } else{
+                    frontImageView.contentMode = .scaleAspectFit
+                    frontImageView.image = frontImageView.defaultImage
                 }
                 
-                frontImageView.image = frontImage
-                backImageView.image = backImage
-                barcodeImageView.image = barcodeImage
+                // Back Image init
+                if let backImage = CardManager.loadImageFromPath(card.backImage){
+                    if backImage.size.width > backImage.size.height{
+                        rotate(images: backImageView, direction: .left)
+                    }
+                    backImageView.contentMode = .scaleToFill
+                    backImageView.image = backImage
+                } else{
+                    backImageView.contentMode = .scaleAspectFit
+                    backImageView.image = backImageView.defaultImage
+                }
                 
-                /*
-                let myImageView:UIImageView = UIImageView()
-                myImageView.transform = myImageView.transform.rotated(by: CGFloat((Double.pi / 2) * -1))
-                myImageView.image = fileManager.loadImageFromPath(date: (cardArray?.created)!, count: i+1)
-                myImageView.contentMode = UIViewContentMode.scaleAspectFit
-                myImageView.frame = frame
-                */
-                
+                // Barcode Image init
+                if let barcodeImage = CardManager.loadImageFromPath(card.barcode){
+                    if barcodeImage.size.width > barcodeImage.size.height{
+                        rotate(images: barcodeImageView, direction: .left)
+                    }
+                    barcodeImageView.contentMode = .scaleToFill
+                    barcodeImageView.image = barcodeImage
+                } else{
+                    barcodeImageView.contentMode = .scaleAspectFit
+                    barcodeImageView.image = barcodeImageView.defaultImage
+                }
             }
         }
     }
