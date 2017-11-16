@@ -13,14 +13,15 @@ class CardManager: NSObject {
     static let colorFilters = ["None", "Red", "Green", "Blue", "Yellow", "Black"]
     
     /// Adds new item in DB
-    static func add(name: String, frontImage: UIImage?, backImage: UIImage?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?){
+    static func add(name: String, frontImage: UIImage?, backImage: UIImage?, barcodeNumber: String?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?){
         let context = AppDelegate.viewContext
         let card = Card(context: context)
         
         card.cardName = name
         card.frontImage = addURLFor(frontImage)
         card.backImage = addURLFor(backImage)
-        card.barcode = addURLFor(barcodeImage)
+        card.barcodeNumber = barcodeNumber
+        card.barcodeImage = addURLFor(barcodeImage)
         card.colorFilter = color
         card.tags = tags
         card.logo = addURLFor(logo)
@@ -30,7 +31,7 @@ class CardManager: NSObject {
     }
     
     /// Edits particular item in DB
-    static func edit(keyField: String, name: String, frontImage: UIImage?, backImage: UIImage?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?) throws{
+    static func edit(keyField: String, name: String, frontImage: UIImage?, backImage: UIImage?, barcodeNumber: String?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?) throws{
         
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
@@ -46,7 +47,8 @@ class CardManager: NSObject {
             card.cardName = name
             card.frontImage = addURLFor(frontImage)
             card.backImage = addURLFor(backImage)
-            card.barcode = addURLFor(barcodeImage)
+            card.barcodeNumber = barcodeNumber
+            card.barcodeImage = addURLFor(barcodeImage)
             card.colorFilter = color
             card.tags = tags
             card.logo = addURLFor(logo)
@@ -192,7 +194,10 @@ class CardManager: NSObject {
         
         filter?.setValue(data, forKey: "inputMessage")
         
-        return UIImage(ciImage: (filter?.outputImage)!)
+        let ciImage = (filter?.outputImage)!
+        let uiImage = UIImage(ciImage: ciImage)
+        
+        return uiImage
     }
     
     /*

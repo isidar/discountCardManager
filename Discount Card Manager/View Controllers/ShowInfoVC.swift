@@ -19,6 +19,8 @@ class ShowInfoVC: UIViewController {
         // Dispose of any resources that can be recreated.
     }
    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var frontImageView: MyImageView!
     @IBOutlet weak var backImageView: MyImageView!
     @IBOutlet weak var barcodeImageView: MyImageView!
@@ -26,43 +28,13 @@ class ShowInfoVC: UIViewController {
     private func loadData(){
         if let cardName = navigationItem.title{
             if let card = CardManager.fetchCard(cardName){
-                /*
-                super.viewDidLoad()
-                
-                scrollView = UIScrollView(frame: CGRect(x: 0, y: 60, width: self.view.frame.width, height: UIScreen.main.bounds.height - 100))
-                
-                configurePageControl()
-                
-                scrollView.delegate = self
-                
-                self.view.addSubview(scrollView)
-                for  i in stride(from: 0, to: imagelist, by: 1) {
-                    var frame = CGRect.zero
-                    frame.origin.x = self.scrollView.frame.size.width * CGFloat(i)
-                    frame.origin.y = 0
-                    frame.size = self.scrollView.frame.size
-                    self.scrollView.isPagingEnabled = true
-                    
-                    
-                    let myImageView:UIImageView = UIImageView()
-                    myImageView.transform = myImageView.transform.rotated(by: CGFloat((Double.pi / 2) * -1))
-                    myImageView.image = fileManager.loadImageFromPath(date: (cardArray?.created)!, count: i+1)
-                    myImageView.contentMode = UIViewContentMode.scaleAspectFit
-                    myImageView.frame = frame
-                    
-                    scrollView.addSubview(myImageView)
-                */
                 
                 // Front Image init
                 if let frontImage = CardManager.loadImageFromPath(card.frontImage){
-                    if frontImage.size.width > frontImage.size.height{
-                        rotate(images: frontImageView, direction: .left)
-                        frontImageView.frame = (frontImageView.superview?.frame)!
-//                        Feature.swapBoundsSize(of: frontImageView)
-//                        Feature.swapFrameSize(of: frontImageView)
-                    }
                     frontImageView.contentMode = .scaleToFill
-                    frontImageView.image = frontImage
+                    frontImageView.image = frontImage.size.width > frontImage.size.height ?
+                        rotate(image: frontImage) :
+                    frontImage
                 } else{
                     frontImageView.contentMode = .scaleAspectFit
                     frontImageView.image = frontImageView.defaultImage
@@ -70,25 +42,29 @@ class ShowInfoVC: UIViewController {
                 
                 // Back Image init
                 if let backImage = CardManager.loadImageFromPath(card.backImage){
-                    if backImage.size.width > backImage.size.height{
-                        rotate(images: backImageView, direction: .left)
-                        Feature.swapBoundsSize(of: backImageView)
-                    }
                     backImageView.contentMode = .scaleToFill
-                    backImageView.image = backImage
+                    backImageView.image = backImage.size.width > backImage.size.height ?
+                        rotate(image: backImage) :
+                    backImage
                 } else{
                     backImageView.contentMode = .scaleAspectFit
                     backImageView.image = backImageView.defaultImage
                 }
                 
                 // Barcode Image init
-                if let barcodeImage = CardManager.loadImageFromPath(card.barcode){
-                    if barcodeImage.size.width > barcodeImage.size.height{
-                        rotate(images: barcodeImageView, direction: .left)
-                        Feature.swapBoundsSize(of: barcodeImageView)
-                    }
+                var barcodeImage: UIImage? = nil
+                
+                if let number = card.barcodeNumber{
+                    barcodeImage = CardManager.generateBarcode(from: number)
+                } else if let image = card.barcodeImage{
+                    barcodeImage = CardManager.loadImageFromPath(image)
+                }
+                
+                if barcodeImage != nil{
                     barcodeImageView.contentMode = .scaleToFill
-                    barcodeImageView.image = barcodeImage
+                    barcodeImageView.image = barcodeImage!.size.width > barcodeImage!.size.height ?
+                        rotate(image: barcodeImage) :
+                    barcodeImage
                 } else{
                     barcodeImageView.contentMode = .scaleAspectFit
                     barcodeImageView.image = barcodeImageView.defaultImage
@@ -97,7 +73,7 @@ class ShowInfoVC: UIViewController {
         }
     }
     
-    /// Rotates images in left or right direction
+    /// Rotates UIImageView in left or right direction
     private func rotate(images: UIImageView... , direction: Feature.Direction){
         switch direction{
         case .left:
@@ -110,7 +86,27 @@ class ShowInfoVC: UIViewController {
             }
         }
     }
-
+    
+    /// Rotates UIImage in right direction
+    func rotate(image: UIImage?) -> UIImage?{
+        if let originalImage = image {
+            let rotateSize = CGSize(width: originalImage.size.height, height: originalImage.size.width)
+            UIGraphicsBeginImageContextWithOptions(rotateSize, true, 2.0)
+            
+            if let context = UIGraphicsGetCurrentContext() {
+                context.rotate(by: 90.0 * CGFloat(Double.pi) / 180.0)
+                context.translateBy(x: 0, y: -originalImage.size.height)
+                originalImage.draw(in: CGRect.init(x: 0, y: 0, width: originalImage.size.width, height: originalImage.size.height))
+                
+                let rotatedImage = UIGraphicsGetImageFromCurrentImageContext()
+                UIGraphicsEndImageContext()
+                
+                return rotatedImage!
+            }
+        }
+        return nil
+    }
+    
     
     // MARK: - Navigation
 

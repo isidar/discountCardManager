@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataIfNeeded()
@@ -41,9 +41,13 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         let backImage = backImageView.image == backImageView.defaultImage ?
             nil :
             backImageView.image
+        
+        let barcodeNumber = wasGeneratedBarcode || !wasChoosenBarcodeImage ?
+            barcodeNumberInTextField : nil
         let barcodeImage = barcodeImageView.image == barcodeImageView.defaultImage ?
             nil :
             barcodeImageView.image
+        
         let logoImage = logoImageView.image == logoImageView.defaultImage ?
             nil :
             logoImageView.image
@@ -62,7 +66,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 return
             }
             CardManager.add(
-                name: name, frontImage: frontImage, backImage: backImage, barcodeImage: barcodeImage, color: colorName, tags: tagsTextView.text, logo: logoImage, description: descriptionTextView.text
+                name: name, frontImage: frontImage, backImage: backImage, barcodeNumber: barcodeNumber, barcodeImage: barcodeImage, color: colorName, tags: tagsTextView.text, logo: logoImage, description: descriptionTextView.text
             )
         default:
             if name != title && CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
@@ -70,7 +74,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 return
             }
             do{
-                try CardManager.edit(keyField: title, name: name, frontImage: frontImage, backImage: backImage, barcodeImage: barcodeImage, color: colorName, tags: tagsTextView.text, logo: logoImage, description: descriptionTextView.text)
+                try CardManager.edit(keyField: title, name: name, frontImage: frontImage, backImage: backImage, barcodeNumber: barcodeNumber, barcodeImage: barcodeImage, color: colorName, tags: tagsTextView.text, logo: logoImage, description: descriptionTextView.text)
             } catch{
                 Feature.showAlert(on: self, message: "Cannot edit card!")
             }
@@ -107,6 +111,11 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
             case "Clear Barcode Image":
                 barcodeImageView.contentMode = .scaleAspectFit
                 barcodeImageView.image = barcodeImageView.defaultImage
+                barcodeTextField.text = nil
+                barcodeNumberInTextField = nil
+                
+                wasGeneratedBarcode = false
+                wasChoosenBarcodeImage = false
             case "Clear Logo Image":
                 logoImageView.contentMode = .scaleAspectFit
                 logoImageView.image = logoImageView.defaultImage
@@ -115,12 +124,26 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     
+    var barcodeNumberInTextField: String?
+    var wasGeneratedBarcode: Bool = false
+    var wasChoosenBarcodeImage: Bool = false
+    
     @IBAction func generateBarcode(_ sender: ButtonStyle) {
         sender.flashAnimation()
         
-        if let barcodeNumber = barcodeTextField.text{
-            if let image = CardManager.generateBarcode(from: barcodeNumber){
-                barcodeImageView.image = image
+        if let number = barcodeTextField.text{
+            if !number.containsOnlySpaces{
+                // check if all characters are numbers !!
+                if let image = CardManager.generateBarcode(from: number){
+                    barcodeImageView.image = image
+                    
+                    wasGeneratedBarcode = true
+                    wasChoosenBarcodeImage = false
+                    
+                    barcodeNumberInTextField = number
+                }
+            } else{
+                Feature.showAlert(on: self, message: "Enter barcode number!")
             }
         }
     }
@@ -149,13 +172,19 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 }
                 
                 // Barcode Image init
-                if let barcodeImage = CardManager.loadImageFromPath(card.barcode){
+                if let number = card.barcodeNumber{
+                    barcodeImageView.contentMode = .scaleToFill
+                    barcodeImageView.image = CardManager.generateBarcode(from: number)
+                    barcodeTextField.text = number
+                    barcodeNumberInTextField = number
+                } else if let barcodeImage = CardManager.loadImageFromPath(card.barcodeImage){
                     barcodeImageView.contentMode = .scaleToFill
                     barcodeImageView.image = barcodeImage
                 } else {
                     barcodeImageView.contentMode = .scaleAspectFit
                     barcodeImageView.image = barcodeImageView.defaultImage
                 }
+                
                 
                 if let pickedColorIndex = CardManager.colorFilters.index(of: card.colorFilter!){
                     colorPickerView.selectRow(pickedColorIndex, inComponent: 0, animated: true)
@@ -245,6 +274,9 @@ extension EditTableVC{
             case "Choose Barcode Image":
                 barcodeImageView.contentMode = .scaleToFill
                 barcodeImageView.image = image
+                
+                wasGeneratedBarcode = false
+                wasChoosenBarcodeImage = true
             case "Choose Logo Image":
                 logoImageView.contentMode = .scaleToFill
                 logoImageView.image = image
@@ -258,4 +290,17 @@ extension EditTableVC{
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
     }
+    
+    // MARK: - TextField Delegate methods
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // MARK: - TextField Delegate methods
+    
+    
 }

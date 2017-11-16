@@ -87,6 +87,9 @@ extension MainVC{
         updateUI()
     }
     
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.view.endEditing(true)
+    }
     
     // MARK: - TableView Data Source
     func numberOfSections(in tableView: UITableView) -> Int {
