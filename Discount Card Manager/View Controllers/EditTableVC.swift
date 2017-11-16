@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadDataIfNeeded()
@@ -25,7 +25,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var frontImageView: MyImageView!
     @IBOutlet weak var backImageView: MyImageView!
-    @IBOutlet weak var barcodeTextField: MyImageView!
+    @IBOutlet weak var barcodeTextField: BarcodeTextField!
     @IBOutlet weak var barcodeImageView: MyImageView!
     @IBOutlet weak var colorPickerView: UIPickerView!
     @IBOutlet weak var tagsTextView: UITextView!
@@ -51,14 +51,14 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         let colorName = CardManager.colorFilters[colorIndex]
         
         if name.containsOnlySpaces {
-            Features.showAlert(on: self, message: "Fill the \"Card Name\" field!")
+            Feature.showAlert(on: self, message: "Fill the \"Card Name\" field!")
             return
         }
         
         switch title{
         case "New Card":
             if CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
-                Features.showAlert(on: self, message: "This name already exist!")
+                Feature.showAlert(on: self, message: "This name already exist!")
                 return
             }
             CardManager.add(
@@ -66,19 +66,63 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
             )
         default:
             if name != title && CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
-                Features.showAlert(on: self, message: "This name already exist!")
+                Feature.showAlert(on: self, message: "This name already exist!")
                 return
             }
             do{
                 try CardManager.edit(keyField: title, name: name, frontImage: frontImage, backImage: backImage, barcodeImage: barcodeImage, color: colorName, tags: tagsTextView.text, logo: logoImage, description: descriptionTextView.text)
             } catch{
-                Features.showAlert(on: self, message: "Cannot edit card!")
+                Feature.showAlert(on: self, message: "Cannot edit card!")
             }
             
             break
         }
         
         removeLastView()
+    }
+    
+    
+    var lastTappedButtonID: String?
+    
+    @IBAction func chooseImage(_ sender: ButtonStyle) {
+        sender.flashAnimation()
+        
+        if let buttonID = sender.accessibilityIdentifier{
+            lastTappedButtonID = buttonID
+            pickImage()
+        }
+    }
+    
+    @IBAction func clearImage(_ sender: ButtonStyle) {
+        sender.flashAnimation()
+        
+        if let buttonID = sender.accessibilityIdentifier{
+            switch buttonID{
+            case "Clear Front Image":
+                frontImageView.contentMode = .scaleAspectFit
+                frontImageView.image = frontImageView.defaultImage
+            case "Clear Back Image":
+                backImageView.contentMode = .scaleAspectFit
+                backImageView.image = backImageView.defaultImage
+            case "Clear Barcode Image":
+                barcodeImageView.contentMode = .scaleAspectFit
+                barcodeImageView.image = barcodeImageView.defaultImage
+            case "Clear Logo Image":
+                logoImageView.contentMode = .scaleAspectFit
+                logoImageView.image = logoImageView.defaultImage
+            default: break
+            }
+        }
+    }
+    
+    @IBAction func generateBarcode(_ sender: ButtonStyle) {
+        sender.flashAnimation()
+        
+        if let barcodeNumber = barcodeTextField.text{
+            if let image = CardManager.generateBarcode(from: barcodeNumber){
+                barcodeImageView.image = image
+            }
+        }
     }
     
     private func loadDataIfNeeded(){
@@ -133,6 +177,29 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     
+    private func pickImage(){
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        
+        let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action: UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            } else{
+                Feature.showAlert(on: self, message: "Camera is not available")
+            }
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action: UIAlertAction) in
+            imagePickerController.sourceType = .photoLibrary
+            self.present(imagePickerController, animated: true, completion: nil)
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
     private func removeLastView(){
         if let nav = self.navigationController {
             var stack = nav.viewControllers
@@ -161,5 +228,34 @@ extension EditTableVC{
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return CardManager.colorFilters.count
+    }
+    
+    // MARK: - ImagePicker Delegate methods
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
+        
+        if let buttonID = lastTappedButtonID{
+            switch buttonID{
+            case "Choose Front Image":
+                frontImageView.contentMode = .scaleToFill
+                frontImageView.image = image
+            case "Choose Back Image":
+                backImageView.contentMode = .scaleToFill
+                backImageView.image = image
+            case "Choose Barcode Image":
+                barcodeImageView.contentMode = .scaleToFill
+                barcodeImageView.image = image
+            case "Choose Logo Image":
+                logoImageView.contentMode = .scaleToFill
+                logoImageView.image = image
+            default: break
+            }
+        }
+        
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

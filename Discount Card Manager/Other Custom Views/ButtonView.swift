@@ -38,14 +38,14 @@ class ButtonStyle: UIButton {
         }
     }
     
-    func flashAnimation(){
+    func flashAnimation(duration: Double = 0.05, fromValue: Double = 1, toValue: Double = 0.7, autoreverses: Bool = true,  repeatCount: Float = 1){
         let flash = CABasicAnimation(keyPath: "opacity")
-        flash.duration = 0.05
-        flash.fromValue = 1
-        flash.toValue = 0.7
+        flash.duration = duration
+        flash.fromValue = fromValue
+        flash.toValue = toValue
         flash.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        flash.autoreverses = true
-        flash.repeatCount = 1
+        flash.autoreverses = autoreverses
+        flash.repeatCount = repeatCount
         
         layer.add(flash, forKey: nil)
     }

@@ -36,7 +36,7 @@ extension NSSet{
     }
 }
 
-struct Features{
+struct Feature{
     static func showAlert(on vc: UIViewController, title: String = "Error", message: String = "Something goes wrong"){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
@@ -48,6 +48,17 @@ struct Features{
     enum Direction {
         case left
         case right
+    }
+    
+    static func swapBoundsSize(of image: UIImageView){
+        let temp = image.bounds.size.width
+        image.bounds.size.width = image.bounds.size.height
+        image.bounds.size.height = temp
+    }
+    static func swapFrameSize(of image: UIImageView){
+        let temp = image.frame.size.width
+        image.frame.size.width = image.frame.size.height
+        image.frame.size.height = temp
     }
 }
 

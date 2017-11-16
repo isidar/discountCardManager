@@ -159,7 +159,7 @@ extension MainVC{
                             tableView.deleteRows(at: [indexPath], with: .automatic)
                         }
                     } catch{
-                        Features.showAlert(on: self, message: "Cannot delete this card!")
+                        Feature.showAlert(on: self, message: "Cannot delete this card!")
                     }
                 }
                 deleteAction.backgroundColor = .red
