@@ -52,17 +52,11 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6V-Hx-pzz">
-                                                    <rect key="frame" x="78" y="14.5" width="259" height="30"/>
+                                                    <rect key="frame" x="78" y="14.5" width="59.5" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9SF-PL-v0a">
-                                                    <rect key="frame" x="345" y="19" width="22" height="22"/>
-                                                    <connections>
-                                                        <action selector="showDescription:" destination="NoD-kv-Jpq" eventType="touchUpInside" id="fTt-Je-zW8"/>
-                                                    </connections>
-                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="zIW-AH-ZrM" secondAttribute="bottom" constant="3.5" id="2A4-TN-x0A"/>
@@ -70,13 +64,8 @@
                                                 <constraint firstItem="zIW-AH-ZrM" firstAttribute="leading" secondItem="B6G-7z-mxL" secondAttribute="leading" constant="19" id="LUX-IW-oYN"/>
                                                 <constraint firstItem="j6V-Hx-pzz" firstAttribute="top" secondItem="B6G-7z-mxL" secondAttribute="topMargin" constant="6.5" id="P9x-nl-L2T"/>
                                                 <constraint firstAttribute="trailing" secondItem="zIW-AH-ZrM" secondAttribute="trailing" constant="305" id="X5c-cW-q9A"/>
-                                                <constraint firstItem="9SF-PL-v0a" firstAttribute="top" secondItem="B6G-7z-mxL" secondAttribute="topMargin" constant="11" id="Ye2-wa-z67"/>
-                                                <constraint firstItem="9SF-PL-v0a" firstAttribute="leading" secondItem="B6G-7z-mxL" secondAttribute="leadingMargin" constant="337" id="Z7r-hf-ayZ"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="j6V-Hx-pzz" secondAttribute="bottom" constant="7" id="fEL-IF-E6u"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="9SF-PL-v0a" secondAttribute="bottom" constant="10.5" id="gio-6J-drk"/>
-                                                <constraint firstItem="9SF-PL-v0a" firstAttribute="leading" secondItem="j6V-Hx-pzz" secondAttribute="trailing" constant="8" id="qRo-n6-spe"/>
                                                 <constraint firstItem="j6V-Hx-pzz" firstAttribute="leading" secondItem="zIW-AH-ZrM" secondAttribute="trailing" constant="8" id="s5H-Ke-OPc"/>
-                                                <constraint firstItem="9SF-PL-v0a" firstAttribute="trailing" secondItem="B6G-7z-mxL" secondAttribute="trailingMargin" id="xDm-TI-ww3"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.81328326463699341" green="0.69924533367156982" blue="0.72044283151626587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -293,7 +282,6 @@
                         <viewLayoutGuide key="safeArea" id="dQM-1x-9aG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discount Cards" id="AWy-Vz-QRt">
-                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="hqG-QD-26u"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="87v-GY-FcD">
                             <connections>
                                 <segue destination="Yq3-7Y-sqt" kind="show" identifier="New Card" id="kOO-0U-CuB"/>
@@ -390,7 +378,7 @@
             <objects>
                 <tableViewController id="Yq3-7Y-sqt" customClass="EditTableVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5bv-3l-Zj7">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.62423257659999998" green="0.40031504639999999" blue="0.44232821770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
@@ -408,6 +396,9 @@
                                                     <color key="textColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Yq3-7Y-sqt" id="9CG-fz-DHN"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -444,11 +435,11 @@
                                                                 <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-qk-aDq" userLabel="Buttons">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-qk-aDq" userLabel="Buttons">
                                                             <rect key="frame" x="0.0" y="149" width="337" height="30.5"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-e4-zhx" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="168.5" height="30.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="30.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Front Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -465,7 +456,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-Xf-XpL" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="168.5" y="0.0" width="168.5" height="30.5"/>
+                                                                    <rect key="frame" x="169.5" y="0.0" width="167.5" height="30.5"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Front Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -598,6 +589,9 @@
                                                                     <nil key="textColor"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <textInputTraits key="textInputTraits"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="Yq3-7Y-sqt" id="wAh-Wx-dw2"/>
+                                                                    </connections>
                                                                 </textField>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-uD-f9x" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="263" y="0.0" width="74" height="30"/>
@@ -741,12 +735,15 @@
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Lorem, ipsum, dolor, sit, er, elit, lamet, consectetaur" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8du-ci-CSc">
+                                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Lorem, ipsum, dolor, sit, er, elit, lamet, consectetaur" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8du-ci-CSc">
                                                                     <rect key="frame" x="0.0" y="34" width="226" height="80"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <color key="textColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                                                    <textInputTraits key="textInputTraits"/>
+                                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                                                    <connections>
+                                                                        <outlet property="delegate" destination="Yq3-7Y-sqt" id="BqW-Jc-PWW"/>
+                                                                    </connections>
                                                                 </textView>
                                                             </subviews>
                                                         </stackView>
@@ -861,6 +858,9 @@
                                                     <color key="textColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="Yq3-7Y-sqt" id="YWe-0F-wqp"/>
+                                                    </connections>
                                                 </textView>
                                             </subviews>
                                             <color key="backgroundColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
@@ -887,7 +887,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <size key="freeformSize" width="375" height="1300"/>
+                    <size key="freeformSize" width="375" height="1400"/>
                     <connections>
                         <outlet property="backImageView" destination="nc8-0m-WpA" id="skq-8E-JLU"/>
                         <outlet property="barcodeImageView" destination="WpH-iA-LqE" id="IGu-9d-pIp"/>

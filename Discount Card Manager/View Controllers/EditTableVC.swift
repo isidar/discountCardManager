@@ -292,15 +292,25 @@ extension EditTableVC{
     }
     
     // MARK: - TextField Delegate methods
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    // MARK: - TextField Delegate methods
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+        tagsTextView.resignFirstResponder()
+        descriptionTextView.resignFirstResponder()
+    }
     
+    
+    // MARK: - TextView Delegate methods
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n"{
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
     
 }
