@@ -24,11 +24,6 @@ class MainVC: UIViewController, UITableViewDelegate, UITableViewDataSource, UISe
         // show data from listOfCards
         tableViewOutlet.reloadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     

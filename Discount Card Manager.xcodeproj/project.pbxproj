@@ -13,8 +13,7 @@
 		215920531FBB6CCC0072279C /* BarcodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215920521FBB6CCC0072279C /* BarcodeTextField.swift */; };
 		215D2E291FB2206B009E78EA /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D2E281FB2206B009E78EA /* CardManager.swift */; };
 		215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54B41FB32507003D7D6D /* Custom Features.swift */; };
-		21AAD3C61FB88AD3002BC433 /* plusMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 21AAD3C41FB88AD2002BC433 /* plusMark.png */; };
-		21AAD3C71FB88AD3002BC433 /* questionMark.png in Resources */ = {isa = PBXBuildFile; fileRef = 21AAD3C51FB88AD2002BC433 /* questionMark.png */; };
+		21821A041FD9F57A00E5E23D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21821A031FD9F57A00E5E23D /* String.swift */; };
 		21D1D9DE1FAB451C003E77F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9DD1FAB451C003E77F3 /* AppDelegate.swift */; };
 		21D1D9E31FAB451F003E77F3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D1D9E11FAB451F003E77F3 /* Main.storyboard */; };
 		21D1D9E61FAB4524003E77F3 /* Discount_Card_Manager.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9E41FAB4523003E77F3 /* Discount_Card_Manager.xcdatamodeld */; };
@@ -33,8 +32,7 @@
 		215920521FBB6CCC0072279C /* BarcodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTextField.swift; sourceTree = "<group>"; };
 		215D2E281FB2206B009E78EA /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		215D54B41FB32507003D7D6D /* Custom Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Features.swift"; sourceTree = "<group>"; };
-		21AAD3C41FB88AD2002BC433 /* plusMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plusMark.png; sourceTree = "<group>"; };
-		21AAD3C51FB88AD2002BC433 /* questionMark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = questionMark.png; sourceTree = "<group>"; };
+		21821A031FD9F57A00E5E23D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		21D1D9DA1FAB4519003E77F3 /* Discount Card Manager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Discount Card Manager.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		21D1D9DD1FAB451C003E77F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21D1D9E21FAB451F003E77F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -94,17 +92,17 @@
 			children = (
 				215D2E281FB2206B009E78EA /* CardManager.swift */,
 				215D54B41FB32507003D7D6D /* Custom Features.swift */,
+				21821A051FD9F63400E5E23D /* Extensions */,
 			);
 			path = Other;
 			sourceTree = "<group>";
 		};
-		215D2E2B1FB22885009E78EA /* Images */ = {
+		21821A051FD9F63400E5E23D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				21AAD3C41FB88AD2002BC433 /* plusMark.png */,
-				21AAD3C51FB88AD2002BC433 /* questionMark.png */,
+				21821A031FD9F57A00E5E23D /* String.swift */,
 			);
-			path = Images;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		21D1D9D11FAB4515003E77F3 = {
@@ -131,7 +129,6 @@
 				211BABD51FB06A9800535840 /* Other Custom Views */,
 				211BABD41FB06A7900535840 /* Database */,
 				215D2E2A1FB22074009E78EA /* Other */,
-				215D2E2B1FB22885009E78EA /* Images */,
 				21D1D9F21FAB45AF003E77F3 /* Supported Files */,
 			);
 			path = "Discount Card Manager";
@@ -207,9 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21AAD3C71FB88AD3002BC433 /* questionMark.png in Resources */,
 				21D1D9EB1FAB4528003E77F3 /* LaunchScreen.storyboard in Resources */,
-				21AAD3C61FB88AD3002BC433 /* plusMark.png in Resources */,
 				21D1D9E81FAB4528003E77F3 /* Assets.xcassets in Resources */,
 				21D1D9E31FAB451F003E77F3 /* Main.storyboard in Resources */,
 			);
@@ -223,6 +218,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				21D1D9E61FAB4524003E77F3 /* Discount_Card_Manager.xcdatamodeld in Sources */,
+				21821A041FD9F57A00E5E23D /* String.swift in Sources */,
 				2159204F1FBB38B10072279C /* ShowInfoVC.swift in Sources */,
 				21D1D9F61FAB4B55003E77F3 /* MainTableViewCell.swift in Sources */,
 				21D1D9DE1FAB451C003E77F3 /* AppDelegate.swift in Sources */,
