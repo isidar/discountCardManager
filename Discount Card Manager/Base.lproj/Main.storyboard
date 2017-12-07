@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RCi-bk-m7O">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RCi-bk-m7O">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -52,7 +52,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6V-Hx-pzz">
-                                                    <rect key="frame" x="78" y="14.5" width="59.5" height="30"/>
+                                                    <rect key="frame" x="78" y="17.5" width="59.5" height="24.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -83,7 +83,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="V94-9J-Qk8" userLabel="Plus Image View" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusMark" translatesAutoresizingMaskIntoConstraints="NO" id="V94-9J-Qk8" userLabel="Plus Image View" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                     <rect key="frame" x="19" y="4" width="51" height="52"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
@@ -96,7 +96,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="click here to add your card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ddH-od-YhV" userLabel="Hint Label">
-                                                    <rect key="frame" x="78" y="14.5" width="289" height="30"/>
+                                                    <rect key="frame" x="78" y="17.5" width="282" height="24.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -424,7 +424,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5UG-z3-Fiw">
                                                     <rect key="frame" x="19" y="10" width="337" height="179.5"/>
                                                     <subviews>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-yL-MJg" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-yL-MJg" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="144"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <gestureRecognizers/>
@@ -432,7 +432,7 @@
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                     <real key="value" value="0.0"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-qk-aDq" userLabel="Buttons">
@@ -503,14 +503,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-ce-QQG">
                                                     <rect key="frame" x="19" y="10" width="337" height="179.5"/>
                                                     <subviews>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-0m-WpA" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-0m-WpA" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="144"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                     <real key="value" value="0.0"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Fk-DgU" userLabel="Buttons">
@@ -617,7 +617,7 @@
                                                                 <constraint firstItem="9IJ-9K-9qZ" firstAttribute="width" secondItem="a0Y-tE-L6j" secondAttribute="width" multiplier="0.75" id="9xC-zo-opP"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-iA-LqE" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                        <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="WpH-iA-LqE" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="35" width="337" height="160"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <userDefinedRuntimeAttributes>
@@ -627,7 +627,7 @@
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                     <real key="value" value="0.0"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zo3-g0-pKt" userLabel="Buttons">
@@ -777,14 +777,14 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QI3-sl-Wro">
                                                     <rect key="frame" x="19" y="10" width="337" height="59.5"/>
                                                     <subviews>
-                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark.png" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-eD-Tsh" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-eD-Tsh" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="147" height="59.5"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                                     <real key="value" value="0.0"/>
                                                                 </userDefinedRuntimeAttribute>
-                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
+                                                                <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Wo5-HJ-rVv" userLabel="Buttons">
@@ -924,7 +924,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="plusMark.png" width="250" height="250"/>
+        <image name="plusMark" width="250" height="250"/>
+        <image name="questionMark" width="250" height="250"/>
         <image name="questionMark.png" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
