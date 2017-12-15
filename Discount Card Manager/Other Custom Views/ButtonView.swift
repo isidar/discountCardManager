@@ -13,13 +13,13 @@ class ButtonStyle: UIButton {
     
     @IBInspectable
     var borderColor: UIColor? {
-        get{
+        get {
             if let color = layer.borderColor {
                 return UIColor(cgColor: color)
             }
             return nil
         }
-        set{
+        set {
             if let color = newValue {
                 layer.borderColor = color.cgColor
             } else {
@@ -30,10 +30,10 @@ class ButtonStyle: UIButton {
     
     @IBInspectable
     var borderWidth: CGFloat {
-        get{
+        get {
             return layer.borderWidth
         }
-        set{
+        set {
             layer.borderWidth = newValue
         }
     }

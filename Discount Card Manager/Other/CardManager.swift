@@ -31,14 +31,14 @@ class CardManager: NSObject {
     }
     
     /// Edits particular item in DB
-    static func edit(keyField: String, name: String, frontImage: UIImage?, backImage: UIImage?, barcodeNumber: String?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?) throws{
+    static func edit(keyField: String, name: String, frontImage: UIImage?, backImage: UIImage?, barcodeNumber: String?, barcodeImage: UIImage?, color: String?, tags: String?, logo: UIImage?, description: String?) throws {
         
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
         request.predicate = NSPredicate(format: "cardName = %@", keyField)
         
-        do{
+        do {
             let cards = try context.fetch(request)
             if cards.isEmpty { return }
             
@@ -55,26 +55,44 @@ class CardManager: NSObject {
             card.cardDescription = description
             
             save(context: card.managedObjectContext)
-        } catch{
+        } catch {
             throw error
         }
     }
     
     /// Deletes particular item in DB
-    static func delete(keyField: String) throws{
+    static func delete(keyField: String) throws {
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
         request.predicate = NSPredicate(format: "cardName = %@", keyField)
         
-        do{
+        do {
             let cards = try context.fetch(request)
-            if cards.isEmpty { return }
             
-            context.delete(cards[0])
+            if !cards.isEmpty {
+                context.delete(cards[0])
+                save(context: context)
+            }
+        } catch {
+            throw error
+        }
+    }
+    
+    /// Deletes particular item in DB
+    static func deleteAll() throws {
+        let context = AppDelegate.viewContext
+        let request: NSFetchRequest<Card> = Card.fetchRequest()
+        
+        do {
+            let cards = try context.fetch(request)
+            
+            for card in cards {
+                context.delete(card)
+            }
             
             save(context: context)
-        } catch{
+        } catch {
             throw error
         }
     }
@@ -98,7 +116,7 @@ class CardManager: NSObject {
         
         request.predicate = NSPredicate(format: "cardName = %@", card)
         
-        if let cards = try? context.fetch(request), !cards.isEmpty{
+        if let cards = try? context.fetch(request), !cards.isEmpty {
             return cards[0]
         }
         return nil
@@ -112,7 +130,7 @@ class CardManager: NSObject {
         request.predicate = NSPredicate(format: "(cardName contains[c] %@) || (tags contains[c] %@)", name, tags)
         request.sortDescriptors = [NSSortDescriptor(key: "cardName", ascending: true)]
         
-        if let cards = try? context.fetch(request), !cards.isEmpty{
+        if let cards = try? context.fetch(request), !cards.isEmpty {
             return cards
         }
         return nil
@@ -126,7 +144,7 @@ class CardManager: NSObject {
         request.sortDescriptors = [NSSortDescriptor(key: "cardName", ascending: true)]
         request.predicate = NSPredicate(format: "colorFilter = %@", color)
         
-        if let cards = try? context.fetch(request), !cards.isEmpty{
+        if let cards = try? context.fetch(request), !cards.isEmpty {
             return cards
         }
         return nil
@@ -134,7 +152,7 @@ class CardManager: NSObject {
     
     /// Adds URL for given image
     static private func addURLFor (_ image: UIImage! )  -> String? {
-        if image == nil{
+        if image == nil {
             return nil
         }
         
@@ -148,7 +166,7 @@ class CardManager: NSObject {
         print (uniqueName == imageString)
         // * * * *
         
-        do{
+        do {
             try UIImageJPEGRepresentation(image, 1.0)?.write(to: imageURL, options: .atomic)
         } catch {
             print(error.localizedDescription)
@@ -210,7 +228,7 @@ class CardManager: NSObject {
             let textArray = rightString.split(separator: ",")
             let arrayOfUniqueTags = Array(Set(textArray))
             
-            for tagText in arrayOfUniqueTags{
+            for tagText in arrayOfUniqueTags {
                 let tagInDB = Tag(context: context!)
                 
                 tagInDB.name = String(tagText)
@@ -218,7 +236,7 @@ class CardManager: NSObject {
             }
             
             return tagsSet as NSSet
-        } else{
+        } else {
             return nil
         }
     }
