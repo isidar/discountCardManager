@@ -8,10 +8,10 @@
 
 import Foundation
 
-extension String{
+extension String {
     /// Checks if string contains only whitespace characters (spaces, tabs, line breaks)
     var containsOnlySpaces: Bool {
-        get{
+        get {
             let regEx = try? NSRegularExpression(pattern: "^\\s+$")
             let numberOfMatches = regEx!.numberOfMatches(in: self, range: NSRange(location: 0, length: self.count))
             

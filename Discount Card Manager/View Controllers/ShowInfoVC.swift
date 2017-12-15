@@ -26,7 +26,7 @@ class ShowInfoVC: UIViewController {
     @IBOutlet weak var barcodeImageView: MyImageView!
     
     private func loadData(){
-        if let cardName = navigationItem.title{
+        if let cardName = navigationItem.title {
             if let card = CardManager.fetchCard(cardName){
                 
                 // Front Image init
@@ -35,7 +35,7 @@ class ShowInfoVC: UIViewController {
                     frontImageView.image = frontImage.size.width > frontImage.size.height ?
                         rotate(image: frontImage) :
                     frontImage
-                } else{
+                } else {
                     frontImageView.contentMode = .scaleAspectFit
                     frontImageView.image = frontImageView.defaultImage
                 }
@@ -46,7 +46,7 @@ class ShowInfoVC: UIViewController {
                     backImageView.image = backImage.size.width > backImage.size.height ?
                         rotate(image: backImage) :
                     backImage
-                } else{
+                } else {
                     backImageView.contentMode = .scaleAspectFit
                     backImageView.image = backImageView.defaultImage
                 }
@@ -54,18 +54,18 @@ class ShowInfoVC: UIViewController {
                 // Barcode Image init
                 var barcodeImage: UIImage? = nil
                 
-                if let number = card.barcodeNumber{
+                if let number = card.barcodeNumber {
                     barcodeImage = CardManager.generateBarcode(from: number)
-                } else if let image = card.barcodeImage{
+                } else if let image = card.barcodeImage {
                     barcodeImage = CardManager.loadImageFromPath(image)
                 }
                 
-                if barcodeImage != nil{
+                if barcodeImage != nil {
                     barcodeImageView.contentMode = .scaleToFill
                     barcodeImageView.image = barcodeImage!.size.width > barcodeImage!.size.height ?
                         rotate(image: barcodeImage) :
                     barcodeImage
-                } else{
+                } else {
                     barcodeImageView.contentMode = .scaleAspectFit
                     barcodeImageView.image = barcodeImageView.defaultImage
                 }
@@ -75,13 +75,13 @@ class ShowInfoVC: UIViewController {
     
     /// Rotates UIImageView in left or right direction
     private func rotate(images: UIImageView... , direction: Feature.Direction){
-        switch direction{
+        switch direction {
         case .left:
-            for imageView in images{
+            for imageView in images {
                 imageView.transform = imageView.transform.rotated(by: CGFloat((Double.pi / 2) * -1))
             }
         case .right:
-            for imageView in images{
+            for imageView in images {
                 imageView.transform = imageView.transform.rotated(by: CGFloat((Double.pi / 2) * 1))
             }
         }
@@ -112,9 +112,9 @@ class ShowInfoVC: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
-            switch identifier{
+            switch identifier {
             case "Edit":
-                if let vc = segue.destination as? EditTableVC{
+                if let vc = segue.destination as? EditTableVC {
                     if let cardName = self.navigationItem.title {
                         vc.navigationItem.title = cardName
                     }

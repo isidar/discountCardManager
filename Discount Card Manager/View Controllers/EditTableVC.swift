@@ -59,7 +59,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
             return
         }
         
-        switch title{
+        switch title {
         case "New Card":
             if CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
                 Feature.showAlert(on: self, message: "This name already exist!")
@@ -73,9 +73,9 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 Feature.showAlert(on: self, message: "This name already exist!")
                 return
             }
-            do{
+            do {
                 try CardManager.edit(keyField: title, name: name, frontImage: frontImage, backImage: backImage, barcodeNumber: barcodeNumber, barcodeImage: barcodeImage, color: colorName, tags: tagsTextView.text, logo: logoImage, description: descriptionTextView.text)
-            } catch{
+            } catch {
                 Feature.showAlert(on: self, message: "Cannot edit card!")
             }
             
@@ -91,7 +91,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     @IBAction func chooseImage(_ sender: ButtonStyle) {
         sender.flashAnimation()
         
-        if let buttonID = sender.accessibilityIdentifier{
+        if let buttonID = sender.accessibilityIdentifier {
             lastTappedButtonID = buttonID
             pickImage()
         }
@@ -100,8 +100,8 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     @IBAction func clearImage(_ sender: ButtonStyle) {
         sender.flashAnimation()
         
-        if let buttonID = sender.accessibilityIdentifier{
-            switch buttonID{
+        if let buttonID = sender.accessibilityIdentifier {
+            switch buttonID {
             case "Clear Front Image":
                 frontImageView.contentMode = .scaleAspectFit
                 frontImageView.image = frontImageView.defaultImage
@@ -131,8 +131,8 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     @IBAction func generateBarcode(_ sender: ButtonStyle) {
         sender.flashAnimation()
         
-        if let number = barcodeTextField.text{
-            if !number.containsOnlySpaces{
+        if let number = barcodeTextField.text {
+            if !number.containsOnlySpaces {
                 // check if all characters are numbers !!
                 if let image = CardManager.generateBarcode(from: number){
                     barcodeImageView.image = image
@@ -142,7 +142,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                     
                     barcodeNumberInTextField = number
                 }
-            } else{
+            } else {
                 Feature.showAlert(on: self, message: "Enter barcode number!")
             }
         }
@@ -172,7 +172,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 }
                 
                 // Barcode Image init
-                if let number = card.barcodeNumber{
+                if let number = card.barcodeNumber {
                     barcodeImageView.contentMode = .scaleToFill
                     barcodeImageView.image = CardManager.generateBarcode(from: number)
                     barcodeTextField.text = number
@@ -216,7 +216,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
             if UIImagePickerController.isSourceTypeAvailable(.camera){
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
-            } else{
+            } else {
                 Feature.showAlert(on: self, message: "Camera is not available")
             }
         }))
@@ -240,13 +240,13 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
     }
     
     private func updateAllUIOf(viewControllers: [UIViewController]){
-        for vc in viewControllers{
+        for vc in viewControllers {
             vc.viewDidLoad()
         }
     }
 }
 
-extension EditTableVC{
+extension EditTableVC {
     // MARK: - PickerView Data Source
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -263,8 +263,8 @@ extension EditTableVC{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
-        if let buttonID = lastTappedButtonID{
-            switch buttonID{
+        if let buttonID = lastTappedButtonID {
+            switch buttonID {
             case "Choose Front Image":
                 frontImageView.contentMode = .scaleToFill
                 frontImageView.image = image

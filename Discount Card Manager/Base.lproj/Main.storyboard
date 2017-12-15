@@ -73,7 +73,6 @@
                                         <connections>
                                             <outlet property="cardNameLabel" destination="j6V-Hx-pzz" id="AA7-Yh-erp"/>
                                             <outlet property="logoImageView" destination="zIW-AH-ZrM" id="Heh-iR-GcD"/>
-                                            <segue destination="Evd-hp-MZm" kind="show" identifier="Show Info" id="vWN-by-Awb"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Empty Card" rowHeight="60" id="88c-6F-RpS">
@@ -282,6 +281,11 @@
                         <viewLayoutGuide key="safeArea" id="dQM-1x-9aG"/>
                     </view>
                     <navigationItem key="navigationItem" title="Discount Cards" id="AWy-Vz-QRt">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="hcm-P1-6sT">
+                            <connections>
+                                <action selector="clickEdit:" destination="K6C-G4-9Do" id="C6s-cb-cdY"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="87v-GY-FcD">
                             <connections>
                                 <segue destination="Yq3-7Y-sqt" kind="show" identifier="New Card" id="kOO-0U-CuB"/>
@@ -289,13 +293,29 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tableViewOutlet" destination="Fb3-ov-2DH" id="7Wz-mF-iMO"/>
+                        <outlet property="addButton" destination="87v-GY-FcD" id="Xut-pI-DVK"/>
+                        <outlet property="cancelButton" destination="vPZ-OL-4TP" id="eIM-ye-HiX"/>
+                        <outlet property="deleteButton" destination="kMm-z0-ZAm" id="zsG-2x-6ZB"/>
+                        <outlet property="editButton" destination="hcm-P1-6sT" id="ORx-52-18m"/>
+                        <outlet property="tableView" destination="Fb3-ov-2DH" id="7Wz-mF-iMO"/>
                         <segue destination="Yq3-7Y-sqt" kind="show" identifier="Edit" id="AF6-1O-RX1"/>
+                        <segue destination="Evd-hp-MZm" kind="show" identifier="Show Info" id="eb0-YW-sgR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LsQ-JP-th4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem title="Cancel" style="done" id="vPZ-OL-4TP">
+                    <connections>
+                        <action selector="clickCancel:" destination="K6C-G4-9Do" id="Jmj-Br-CiT"/>
+                    </connections>
+                </barButtonItem>
+                <barButtonItem title="Delete" id="kMm-z0-ZAm">
+                    <color key="tintColor" red="1" green="0.14068822787448754" blue="0.022208880709084888" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <connections>
+                        <action selector="clickDelete:" destination="K6C-G4-9Do" id="RoG-2e-Z0Q"/>
+                    </connections>
+                </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="-2537" y="-736"/>
+            <point key="canvasLocation" x="-2498" y="-736"/>
         </scene>
         <!--Card Name-->
         <scene sceneID="MX8-yk-Mnn">
@@ -902,7 +922,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRU-tL-flF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2524" y="318"/>
+            <point key="canvasLocation" x="-2497" y="416"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rWU-7L-xKc">
@@ -929,6 +949,6 @@
         <image name="questionMark.png" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="AF6-1O-RX1"/>
+        <segue reference="wpN-fJ-0ou"/>
     </inferredMetricsTieBreakers>
 </document>
