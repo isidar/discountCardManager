@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShowInfoVC: UIViewController {
+class ShowInfoVC: UIViewController, UIScrollViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadData()
@@ -20,6 +20,8 @@ class ShowInfoVC: UIViewController {
     }
    
     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var pageControl: UIPageControl!
+    
     
     @IBOutlet weak var frontImageView: MyImageView!
     @IBOutlet weak var backImageView: MyImageView!
@@ -107,6 +109,11 @@ class ShowInfoVC: UIViewController {
         return nil
     }
     
+    // MARK: - ScrollView Delegate
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        pageControl.currentPage = Int(scrollView.contentOffset.x / (scrollView.contentSize.width / 3))
+    }
     
     // MARK: - Navigation
 

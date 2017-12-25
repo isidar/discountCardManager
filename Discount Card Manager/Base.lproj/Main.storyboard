@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="RCi-bk-m7O">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -16,11 +17,11 @@
             <objects>
                 <viewController id="K6C-G4-9Do" customClass="MainVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uJE-5y-S3g">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Card name/tags" translatesAutoresizingMaskIntoConstraints="NO" id="7h1-zx-Hf9">
-                                <rect key="frame" x="0.0" y="64" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="56"/>
                                 <color key="backgroundColor" red="0.62487131357192993" green="0.40006744861602783" blue="0.44385266304016113" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -28,19 +29,22 @@
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Fb3-ov-2DH">
-                                <rect key="frame" x="0.0" y="120" width="375" height="491"/>
+                                <rect key="frame" x="0.0" y="120" width="414" height="560"/>
                                 <color key="backgroundColor" red="0.62487131357192993" green="0.40006744861602783" blue="0.44385266304016113" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Card" rowHeight="60" id="NoD-kv-Jpq" customClass="MainTableViewCell" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="55.333333333333336" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NoD-kv-Jpq" id="B6G-7z-mxL">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-AH-ZrM" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                    <rect key="frame" x="19" y="4" width="51" height="52"/>
+                                                    <rect key="frame" x="15" y="4" width="61" height="53"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="zIW-AH-ZrM" secondAttribute="height" multiplier="15:13" id="PzQ-vk-sj0"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -52,20 +56,19 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6V-Hx-pzz">
-                                                    <rect key="frame" x="78" y="17.5" width="59.5" height="24.5"/>
+                                                    <rect key="frame" x="84" y="15.666666666666664" width="315" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="zIW-AH-ZrM" secondAttribute="bottom" constant="3.5" id="2A4-TN-x0A"/>
-                                                <constraint firstItem="zIW-AH-ZrM" firstAttribute="top" secondItem="B6G-7z-mxL" secondAttribute="top" constant="4" id="Is3-9k-Q1g"/>
-                                                <constraint firstItem="zIW-AH-ZrM" firstAttribute="leading" secondItem="B6G-7z-mxL" secondAttribute="leading" constant="19" id="LUX-IW-oYN"/>
-                                                <constraint firstItem="j6V-Hx-pzz" firstAttribute="top" secondItem="B6G-7z-mxL" secondAttribute="topMargin" constant="6.5" id="P9x-nl-L2T"/>
-                                                <constraint firstAttribute="trailing" secondItem="zIW-AH-ZrM" secondAttribute="trailing" constant="305" id="X5c-cW-q9A"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="j6V-Hx-pzz" secondAttribute="bottom" constant="7" id="fEL-IF-E6u"/>
-                                                <constraint firstItem="j6V-Hx-pzz" firstAttribute="leading" secondItem="zIW-AH-ZrM" secondAttribute="trailing" constant="8" id="s5H-Ke-OPc"/>
+                                                <constraint firstItem="zIW-AH-ZrM" firstAttribute="leading" secondItem="B6G-7z-mxL" secondAttribute="leading" constant="15" id="2nP-SQ-V6R"/>
+                                                <constraint firstItem="j6V-Hx-pzz" firstAttribute="leading" secondItem="zIW-AH-ZrM" secondAttribute="trailing" constant="8" id="8AY-RP-aij"/>
+                                                <constraint firstItem="j6V-Hx-pzz" firstAttribute="centerY" secondItem="zIW-AH-ZrM" secondAttribute="centerY" id="JTQ-em-lsa"/>
+                                                <constraint firstItem="j6V-Hx-pzz" firstAttribute="trailing" secondItem="B6G-7z-mxL" secondAttribute="trailingMargin" id="Vlk-75-AU8"/>
+                                                <constraint firstAttribute="bottom" secondItem="zIW-AH-ZrM" secondAttribute="bottom" constant="3.5" id="hVJ-gu-sSC"/>
+                                                <constraint firstItem="zIW-AH-ZrM" firstAttribute="top" secondItem="B6G-7z-mxL" secondAttribute="top" constant="4" id="ovu-5e-6V0"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.81328326463699341" green="0.69924533367156982" blue="0.72044283151626587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -76,15 +79,18 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Empty Card" rowHeight="60" id="88c-6F-RpS">
-                                        <rect key="frame" x="0.0" y="115.5" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="115.33333333333334" width="414" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="88c-6F-RpS" id="a8E-zd-6qh">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="59.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plusMark" translatesAutoresizingMaskIntoConstraints="NO" id="V94-9J-Qk8" userLabel="Plus Image View" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                    <rect key="frame" x="19" y="4" width="51" height="52"/>
+                                                    <rect key="frame" x="15" y="4" width="60" height="52"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="V94-9J-Qk8" secondAttribute="height" multiplier="15:13" id="hhf-WS-zET"/>
+                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                             <color key="value" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -95,21 +101,19 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="click here to add your card" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ddH-od-YhV" userLabel="Hint Label">
-                                                    <rect key="frame" x="78" y="17.5" width="282" height="24.5"/>
+                                                    <rect key="frame" x="83" y="16.666666666666671" width="316" height="27.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ddH-od-YhV" firstAttribute="top" secondItem="a8E-zd-6qh" secondAttribute="topMargin" constant="6.5" id="7n6-dX-S9c"/>
-                                                <constraint firstAttribute="bottom" secondItem="V94-9J-Qk8" secondAttribute="bottom" constant="3.5" id="CB5-1C-wrb"/>
-                                                <constraint firstItem="V94-9J-Qk8" firstAttribute="top" secondItem="a8E-zd-6qh" secondAttribute="top" constant="4" id="D03-cW-qew"/>
-                                                <constraint firstAttribute="trailing" secondItem="V94-9J-Qk8" secondAttribute="trailing" constant="305" id="aDD-cc-6XJ"/>
-                                                <constraint firstItem="V94-9J-Qk8" firstAttribute="leading" secondItem="a8E-zd-6qh" secondAttribute="leading" constant="19" id="lMI-Cr-YjK"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="ddH-od-YhV" secondAttribute="bottom" constant="7" id="mVX-il-rvO"/>
-                                                <constraint firstItem="ddH-od-YhV" firstAttribute="leading" secondItem="V94-9J-Qk8" secondAttribute="trailing" constant="8" id="uWM-ff-kO8"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="ddH-od-YhV" secondAttribute="trailing" id="zIJ-Fc-n3g"/>
+                                                <constraint firstItem="V94-9J-Qk8" firstAttribute="leading" secondItem="a8E-zd-6qh" secondAttribute="leading" constant="15" id="9l9-rc-Zu0"/>
+                                                <constraint firstItem="ddH-od-YhV" firstAttribute="trailing" secondItem="a8E-zd-6qh" secondAttribute="trailingMargin" id="Myy-ID-tY3"/>
+                                                <constraint firstItem="ddH-od-YhV" firstAttribute="centerY" secondItem="V94-9J-Qk8" secondAttribute="centerY" id="PEc-NL-RBG"/>
+                                                <constraint firstItem="V94-9J-Qk8" firstAttribute="top" secondItem="a8E-zd-6qh" secondAttribute="top" constant="4" id="X53-9k-Nc2"/>
+                                                <constraint firstAttribute="bottom" secondItem="V94-9J-Qk8" secondAttribute="bottom" constant="3.5" id="Z4x-Q6-1Eh"/>
+                                                <constraint firstItem="ddH-od-YhV" firstAttribute="leading" secondItem="V94-9J-Qk8" secondAttribute="trailing" constant="8" id="dy7-pW-p7A"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.81328326463699341" green="0.69924533367156982" blue="0.72044283151626587" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -125,13 +129,13 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iLe-3T-plU" userLabel="Filter buttons View">
-                                <rect key="frame" x="0.0" y="611" width="375" height="56"/>
+                                <rect key="frame" x="0.0" y="680" width="414" height="56"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Egw-tI-Fca">
-                                        <rect key="frame" x="9" y="8.5" width="356.5" height="39"/>
+                                        <rect key="frame" x="10" y="8.6666666666666288" width="393.66666666666669" height="39"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEM-Qq-Bew" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="42.5" height="39"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="47.666666666666664" height="39"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="All"/>
                                                 <userDefinedRuntimeAttributes>
@@ -147,8 +151,9 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7C-LZ-xrP" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="52.5" y="0.0" width="42" height="39"/>
+                                                <rect key="frame" x="57.666666666666671" y="0.0" width="47.666666666666671" height="39"/>
                                                 <color key="backgroundColor" red="0.91815090673575139" green="0.91476949667166063" blue="0.90462526647938823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                                                 <state key="normal" title="None"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -163,7 +168,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBs-gN-zCd" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="104.5" y="0.0" width="42.5" height="39"/>
+                                                <rect key="frame" x="115.33333333333333" y="0.0" width="47.666666666666671" height="39"/>
                                                 <color key="backgroundColor" red="1" green="0.62639643700585212" blue="0.64439448488529139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Red">
                                                     <color key="titleColor" red="1" green="0.62639643700000003" blue="0.64439448489999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -181,7 +186,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx0-Y4-eZO" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="157" y="0.0" width="42.5" height="39"/>
+                                                <rect key="frame" x="173" y="0.0" width="47.666666666666657" height="39"/>
                                                 <color key="backgroundColor" red="0.79870213952654845" green="1" blue="0.82918155498291157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Green">
                                                     <color key="titleColor" red="0.79870213950000002" green="1" blue="0.82918155500000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -199,7 +204,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Z9-ya-XCa" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="209.5" y="0.0" width="42.5" height="39"/>
+                                                <rect key="frame" x="230.66666666666666" y="0.0" width="47.666666666666657" height="39"/>
                                                 <color key="backgroundColor" red="0.79548012152682901" green="0.89445493794979125" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Blue">
                                                     <color key="titleColor" red="0.79548012150000003" green="0.89445493789999997" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -217,7 +222,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9b-TW-xGV" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="262" y="0.0" width="42" height="39"/>
+                                                <rect key="frame" x="288.33333333333331" y="0.0" width="47.666666666666686" height="39"/>
                                                 <color key="backgroundColor" red="1" green="0.99191569869504226" blue="0.76637846234159412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Yellow">
                                                     <color key="titleColor" red="1" green="0.99191569869999996" blue="0.76637846229999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -235,7 +240,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwx-Vp-cgy" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="314" y="0.0" width="42.5" height="39"/>
+                                                <rect key="frame" x="346" y="0.0" width="47.666666666666686" height="39"/>
                                                 <color key="backgroundColor" red="0.46856784326424872" green="0.46583426614034795" blue="0.45629444385566709" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Black">
                                                     <color key="titleColor" red="0.46856784330000001" green="0.46583426610000001" blue="0.45629444390000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -315,36 +320,40 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="-2498" y="-736"/>
+            <point key="canvasLocation" x="-2499" y="-806"/>
         </scene>
         <!--Card Name-->
         <scene sceneID="MX8-yk-Mnn">
             <objects>
                 <viewController id="Evd-hp-MZm" customClass="ShowInfoVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uut-ES-mK8">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <pageControl contentMode="scaleToFill" fixedFrame="YES" highlighted="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="pWE-Jg-smm">
+                                <rect key="frame" x="0.0" y="689" width="414" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gbn-K0-t7u">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Zx-7t-lMF">
-                                        <rect key="frame" x="0.0" y="0.0" width="1125" height="603"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="4Zx-7t-lMF">
+                                        <rect key="frame" x="0.0" y="0.0" width="1242" height="672"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mHs-Ej-MEw" userLabel="Front Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="414" height="672"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Gu-hC-L5w" userLabel="Back Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="375" y="0.0" width="375" height="603"/>
+                                                <rect key="frame" x="414" y="0.0" width="414" height="672"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                 </userDefinedRuntimeAttributes>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="164-HR-TJC" userLabel="Barcode Image" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                <rect key="frame" x="750" y="0.0" width="375" height="603"/>
+                                                <rect key="frame" x="828" y="0.0" width="414" height="672"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="image" keyPath="defaultImage" value="questionMark.png"/>
                                                 </userDefinedRuntimeAttributes>
@@ -354,16 +363,15 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="4Zx-7t-lMF" secondAttribute="trailing" id="D3b-Dp-Kh7"/>
-                                    <constraint firstItem="164-HR-TJC" firstAttribute="height" secondItem="gbn-K0-t7u" secondAttribute="height" id="ItH-tr-JHM"/>
                                     <constraint firstItem="4Zx-7t-lMF" firstAttribute="leading" secondItem="gbn-K0-t7u" secondAttribute="leading" id="Ojm-0M-VLf"/>
                                     <constraint firstItem="mHs-Ej-MEw" firstAttribute="height" secondItem="gbn-K0-t7u" secondAttribute="height" id="RhR-J8-pZW"/>
                                     <constraint firstAttribute="bottom" secondItem="4Zx-7t-lMF" secondAttribute="bottom" id="ZHt-Wr-dqr"/>
-                                    <constraint firstItem="5Gu-hC-L5w" firstAttribute="width" secondItem="gbn-K0-t7u" secondAttribute="width" id="cWm-ua-KES"/>
                                     <constraint firstItem="4Zx-7t-lMF" firstAttribute="top" secondItem="gbn-K0-t7u" secondAttribute="top" id="hy3-a2-KdA"/>
                                     <constraint firstItem="mHs-Ej-MEw" firstAttribute="width" secondItem="gbn-K0-t7u" secondAttribute="width" id="nug-Ub-30k"/>
-                                    <constraint firstItem="5Gu-hC-L5w" firstAttribute="height" secondItem="gbn-K0-t7u" secondAttribute="height" id="z2e-Ct-xcb"/>
-                                    <constraint firstItem="164-HR-TJC" firstAttribute="width" secondItem="gbn-K0-t7u" secondAttribute="width" id="zWd-8M-MeQ"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Evd-hp-MZm" id="Jo4-YE-auS"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" red="0.62423257659999998" green="0.40031504639999999" blue="0.44232821770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -386,12 +394,13 @@
                         <outlet property="backImageView" destination="5Gu-hC-L5w" id="i3m-hp-G9c"/>
                         <outlet property="barcodeImageView" destination="164-HR-TJC" id="jyu-J2-CDe"/>
                         <outlet property="frontImageView" destination="mHs-Ej-MEw" id="03q-1u-9hH"/>
+                        <outlet property="pageControl" destination="pWE-Jg-smm" id="gC8-ul-gQG"/>
                         <outlet property="scrollView" destination="gbn-K0-t7u" id="ZFO-CF-vC2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ai9-rF-f3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1686" y="-736"/>
+            <point key="canvasLocation" x="-1687.2" y="-736.28185907046486"/>
         </scene>
         <!--New Card / Edit-->
         <scene sceneID="mEo-vH-Q6D">
@@ -408,11 +417,11 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="r6W-zL-xuP" id="wfh-5d-5xt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Card name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jQr-RZ-Dcn">
-                                                    <rect key="frame" x="19" y="10" width="337" height="29.5"/>
+                                                    <rect key="frame" x="19" y="10.000000000000002" width="337" height="29.666666666666671"/>
                                                     <color key="textColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -438,11 +447,11 @@
                                         <rect key="frame" x="0.0" y="106" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SCG-ia-E9b" id="mZQ-gz-8VU">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="5UG-z3-Fiw">
-                                                    <rect key="frame" x="19" y="10" width="337" height="179.5"/>
+                                                    <rect key="frame" x="19" y="10" width="337" height="179.66666666666666"/>
                                                     <subviews>
                                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="v1j-yL-MJg" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="144"/>
@@ -456,10 +465,10 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-qk-aDq" userLabel="Buttons">
-                                                            <rect key="frame" x="0.0" y="149" width="337" height="30.5"/>
+                                                            <rect key="frame" x="0.0" y="149" width="337" height="30.666666666666657"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-e4-zhx" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="30.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Front Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -476,7 +485,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-Xf-XpL" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="169.5" y="0.0" width="167.5" height="30.5"/>
+                                                                    <rect key="frame" x="169.66666666666663" y="0.0" width="167.33333333333337" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Front Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -517,11 +526,11 @@
                                         <rect key="frame" x="0.0" y="334" width="375" height="200"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Sa7-A9-xtd" id="7Fn-9j-CPR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="199.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gNN-ce-QQG">
-                                                    <rect key="frame" x="19" y="10" width="337" height="179.5"/>
+                                                    <rect key="frame" x="19" y="10" width="337" height="179.66666666666666"/>
                                                     <subviews>
                                                         <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="nc8-0m-WpA" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="144"/>
@@ -534,10 +543,10 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Fk-DgU" userLabel="Buttons">
-                                                            <rect key="frame" x="0.0" y="149" width="337" height="30.5"/>
+                                                            <rect key="frame" x="0.0" y="149" width="337" height="30.666666666666657"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75z-J1-zyz" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="167.5" height="30.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Back Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -554,7 +563,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2W-5R-wQe" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="169.5" y="0.0" width="167.5" height="30.5"/>
+                                                                    <rect key="frame" x="169.66666666666663" y="0.0" width="167.33333333333337" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Back Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -595,11 +604,11 @@
                                         <rect key="frame" x="0.0" y="562" width="375" height="250"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LIv-6g-U9W" id="rK2-Y8-hBX">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="249.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="gZS-ss-ZGE">
-                                                    <rect key="frame" x="19" y="10" width="337" height="229.5"/>
+                                                    <rect key="frame" x="19" y="10" width="337" height="229.66666666666666"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="a0Y-tE-L6j" userLabel="Barcode Stack">
                                                             <rect key="frame" x="0.0" y="0.0" width="337" height="30"/>
@@ -651,10 +660,10 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zo3-g0-pKt" userLabel="Buttons">
-                                                            <rect key="frame" x="0.0" y="200" width="337" height="29.5"/>
+                                                            <rect key="frame" x="0.0" y="200" width="337" height="29.666666666666657"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NP9-cv-M1t" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="29.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="168" height="29.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Barcode Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -675,7 +684,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgo-82-qnV" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="169" y="0.0" width="168" height="29.5"/>
+                                                                    <rect key="frame" x="169" y="0.0" width="168" height="29.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Barcode Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -721,7 +730,7 @@
                                         <rect key="frame" x="0.0" y="840" width="375" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lPb-dE-b3U" id="ezK-nH-49l">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="119.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="RBK-mB-SYy">
@@ -791,14 +800,14 @@
                                         <rect key="frame" x="0.0" y="988" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cLz-Jn-dhC" id="Lj8-MJ-Bdt">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="79.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="QI3-sl-Wro">
-                                                    <rect key="frame" x="19" y="10" width="337" height="59.5"/>
+                                                    <rect key="frame" x="19" y="9.9999999999999964" width="337" height="59.666666666666657"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionMark" translatesAutoresizingMaskIntoConstraints="NO" id="n4M-eD-Tsh" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="147" height="59.5"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="147" height="59.666666666666664"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -808,7 +817,7 @@
                                                             </userDefinedRuntimeAttributes>
                                                         </imageView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Wo5-HJ-rVv" userLabel="Buttons">
-                                                            <rect key="frame" x="152" y="0.0" width="185" height="59.5"/>
+                                                            <rect key="frame" x="152" y="0.0" width="185" height="59.666666666666664"/>
                                                             <subviews>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc1-la-Ojx" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="185" height="29"/>
@@ -828,7 +837,7 @@
                                                                     </connections>
                                                                 </button>
                                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meP-w1-YAw" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                                    <rect key="frame" x="0.0" y="31" width="185" height="28.5"/>
+                                                                    <rect key="frame" x="0.0" y="31" width="185" height="28.666666666666671"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Logo Image"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -869,11 +878,11 @@
                                         <rect key="frame" x="0.0" y="1096" width="375" height="150"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nmT-pP-lkE" id="yr3-YZ-c5w">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="149.66666666666666"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" text="Enter description" translatesAutoresizingMaskIntoConstraints="NO" id="ICQ-2y-qJd">
-                                                    <rect key="frame" x="19" y="10" width="337" height="129.5"/>
+                                                    <rect key="frame" x="19" y="10" width="337" height="129.66666666666666"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="textColor" red="0.62487131360000003" green="0.40006744859999999" blue="0.44385266299999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="17"/>
@@ -930,7 +939,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RCi-bk-m7O" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Lb1-x3-oHw">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -949,6 +958,6 @@
         <image name="questionMark.png" width="250" height="250"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wpN-fJ-0ou"/>
+        <segue reference="vNc-ds-Dqx"/>
     </inferredMetricsTieBreakers>
 </document>
