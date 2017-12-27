@@ -170,7 +170,6 @@ extension MainVC {
         if let count = listOfCards?.count {
             return count == 0 ? 1 : count
         }
-        //Features.showAlert(on: self, message: "Cannot load data!")
         return 0
     }
     
@@ -192,11 +191,7 @@ extension MainVC {
                 } else {
                     cardCell.logoImageView.contentMode = .scaleAspectFit
                     cardCell.logoImageView.image = cardCell.logoImageView.defaultImage
-                    
-                    // change all contentsOfFile: "questionMark.png" !!!!!! to
-                    // ... = cardCell.logoImageView.defaultIamge
                 }
-                // ... = card.cardDescription
             }
             
             return cell

@@ -23,8 +23,4 @@ class MainTableViewCell: UITableViewCell {
     @IBOutlet weak var logoImageView: MyImageView!
     @IBOutlet weak var cardNameLabel: UILabel!
     
-    @IBAction func showDescription(_ sender: UIButton) {
-        
-    }
-    
 }

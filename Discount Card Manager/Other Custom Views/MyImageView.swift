@@ -39,13 +39,4 @@ class MyImageView: UIImageView {
 
     @IBInspectable
     var defaultImage: UIImage? = nil
-    /*
-    override var image: UIImage?{
-        didSet{
-            if image == nil{
-                image = defaultImage
-            }
-        }
-    }
-    */
 }

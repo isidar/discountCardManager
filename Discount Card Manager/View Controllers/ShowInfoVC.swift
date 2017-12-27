@@ -13,15 +13,9 @@ class ShowInfoVC: UIViewController, UIScrollViewDelegate {
         super.viewDidLoad()
         loadData()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
     
     @IBOutlet weak var frontImageView: MyImageView!
     @IBOutlet weak var backImageView: MyImageView!
@@ -76,7 +70,7 @@ class ShowInfoVC: UIViewController, UIScrollViewDelegate {
     }
     
     /// Rotates UIImageView in left or right direction
-    private func rotate(images: UIImageView... , direction: Feature.Direction){
+    private func rotate(images: UIImageView... , direction: Direction){
         switch direction {
         case .left:
             for imageView in images {
@@ -130,6 +124,5 @@ class ShowInfoVC: UIViewController, UIScrollViewDelegate {
             }
         }
     }
-    
 
 }

@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-struct Feature{
+struct Feature {
     static func showAlert(on vc: UIViewController, title: String = "Error", message: String = "Something goes wrong"){
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (action) in
@@ -17,10 +17,6 @@ struct Feature{
         }))
         vc.present(alert, animated: true, completion: nil)
     }
-    
-    enum Direction {
-        case left
-        case right
-    }
+
 }
 

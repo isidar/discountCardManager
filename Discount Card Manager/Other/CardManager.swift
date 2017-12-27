@@ -161,11 +161,6 @@ class CardManager: NSObject {
         // Change extension if you want to save as JPG/PNG/etc.
         let imageURL = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent(uniqueName))
         
-        // probably is not required (just for testing)
-        let imageString = String(describing: imageURL)
-        print (uniqueName == imageString)
-        // * * * *
-        
         do {
             try UIImageJPEGRepresentation(image, 1.0)?.write(to: imageURL, options: .atomic)
         } catch {
@@ -205,7 +200,7 @@ class CardManager: NSObject {
         return nil
     }
     
-    /// need to be tested - Generates barcode image from given number as String
+    /// Generates barcode image from given number as String
     static func generateBarcode(from code: String) -> UIImage? {
         let data = code.data(using: .ascii)
         let filter = CIFilter(name: "CICode128BarcodeGenerator")
@@ -217,30 +212,6 @@ class CardManager: NSObject {
         
         return uiImage
     }
-    
-    /*
-    /// need to be tested
-    static private func createSetOfTag(from tags: UITextView?, context: NSManagedObjectContext?) -> NSSet? {
-        if let textViewText = tags?.text {
-            var tagsSet = Set<Tag>()
-            
-            let rightString = textViewText.replacingOccurrences(of: "[\\W\\s]+", with: ",", options: .regularExpression)
-            let textArray = rightString.split(separator: ",")
-            let arrayOfUniqueTags = Array(Set(textArray))
-            
-            for tagText in arrayOfUniqueTags {
-                let tagInDB = Tag(context: context!)
-                
-                tagInDB.name = String(tagText)
-                tagsSet.insert(tagInDB)
-            }
-            
-            return tagsSet as NSSet
-        } else {
-            return nil
-        }
-    }
- */
     
     /// Saves a passed context (just context.save)
     static private func save(context: NSManagedObjectContext?){

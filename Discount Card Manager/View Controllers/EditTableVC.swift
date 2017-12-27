@@ -15,17 +15,12 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         loadDataIfNeeded()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // MARK: - Outlets
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var frontImageView: MyImageView!
     @IBOutlet weak var backImageView: MyImageView!
-    @IBOutlet weak var barcodeTextField: BarcodeTextField!
+    @IBOutlet weak var barcodeTextField: UITextField!
     @IBOutlet weak var barcodeImageView: MyImageView!
     @IBOutlet weak var colorPickerView: UIPickerView!
     @IBOutlet weak var tagsTextView: UITextView!
@@ -248,6 +243,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
 
 extension EditTableVC {
     // MARK: - PickerView Data Source
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -260,6 +256,7 @@ extension EditTableVC {
     }
     
     // MARK: - ImagePicker Delegate methods
+    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
         
@@ -292,6 +289,7 @@ extension EditTableVC {
     }
     
     // MARK: - TextField Delegate methods
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
@@ -305,6 +303,7 @@ extension EditTableVC {
     
     
     // MARK: - TextView Delegate methods
+    
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n"{
             textView.resignFirstResponder()

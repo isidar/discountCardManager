@@ -10,7 +10,6 @@
 		211BABCC1FB0675600535840 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BABCB1FB0675600535840 /* ButtonView.swift */; };
 		2128D4231FB9DEAE00691979 /* MyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2128D4221FB9DEAE00691979 /* MyImageView.swift */; };
 		2159204F1FBB38B10072279C /* ShowInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2159204E1FBB38B10072279C /* ShowInfoVC.swift */; };
-		215920531FBB6CCC0072279C /* BarcodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215920521FBB6CCC0072279C /* BarcodeTextField.swift */; };
 		215D2E291FB2206B009E78EA /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D2E281FB2206B009E78EA /* CardManager.swift */; };
 		215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54B41FB32507003D7D6D /* Custom Features.swift */; };
 		21821A041FD9F57A00E5E23D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21821A031FD9F57A00E5E23D /* String.swift */; };
@@ -23,13 +22,13 @@
 		21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB471FB1CABB00A48F24 /* Card.swift */; };
 		21E3EB4E1FB1D37D00A48F24 /* EditTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4D1FB1D37D00A48F24 /* EditTableVC.swift */; };
 		21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */; };
+		21E8145E1FF38A2E00B7A0A1 /* Directions Enumeration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E8145D1FF38A2E00B7A0A1 /* Directions Enumeration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		211BABCB1FB0675600535840 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		2128D4221FB9DEAE00691979 /* MyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageView.swift; sourceTree = "<group>"; };
 		2159204E1FBB38B10072279C /* ShowInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInfoVC.swift; sourceTree = "<group>"; };
-		215920521FBB6CCC0072279C /* BarcodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTextField.swift; sourceTree = "<group>"; };
 		215D2E281FB2206B009E78EA /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		215D54B41FB32507003D7D6D /* Custom Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Features.swift"; sourceTree = "<group>"; };
 		21821A031FD9F57A00E5E23D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -44,6 +43,7 @@
 		21E3EB471FB1CABB00A48F24 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		21E3EB4D1FB1D37D00A48F24 /* EditTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableVC.swift; sourceTree = "<group>"; };
 		21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		21E8145D1FF38A2E00B7A0A1 /* Directions Enumeration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Directions Enumeration.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,6 @@
 				21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */,
 				211BABCB1FB0675600535840 /* ButtonView.swift */,
 				2128D4221FB9DEAE00691979 /* MyImageView.swift */,
-				215920521FBB6CCC0072279C /* BarcodeTextField.swift */,
 			);
 			path = "Other Custom Views";
 			sourceTree = "<group>";
@@ -92,6 +91,7 @@
 			children = (
 				215D2E281FB2206B009E78EA /* CardManager.swift */,
 				215D54B41FB32507003D7D6D /* Custom Features.swift */,
+				21E8145D1FF38A2E00B7A0A1 /* Directions Enumeration.swift */,
 				21821A051FD9F63400E5E23D /* Extensions */,
 			);
 			path = Other;
@@ -221,10 +221,10 @@
 				21821A041FD9F57A00E5E23D /* String.swift in Sources */,
 				2159204F1FBB38B10072279C /* ShowInfoVC.swift in Sources */,
 				21D1D9F61FAB4B55003E77F3 /* MainTableViewCell.swift in Sources */,
+				21E8145E1FF38A2E00B7A0A1 /* Directions Enumeration.swift in Sources */,
 				21D1D9DE1FAB451C003E77F3 /* AppDelegate.swift in Sources */,
 				215D2E291FB2206B009E78EA /* CardManager.swift in Sources */,
 				21E3EB4E1FB1D37D00A48F24 /* EditTableVC.swift in Sources */,
-				215920531FBB6CCC0072279C /* BarcodeTextField.swift in Sources */,
 				21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */,
 				21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */,
 				2128D4231FB9DEAE00691979 /* MyImageView.swift in Sources */,
