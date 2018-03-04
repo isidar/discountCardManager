@@ -99,8 +99,8 @@ class CardManager: NSObject {
     
     // MARK: - Fetch methods
     
-    ///
-    static func fetchAllData() -> [Card]?{
+    /// Fetches all available card in Database
+    static func fetchAllData() -> [Card]? {
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
@@ -109,8 +109,8 @@ class CardManager: NSObject {
         return try? context.fetch(request)
     }
     
-    ///
-    static func fetchCard(_ card: String) -> Card?{
+    /// Fetches certain card from Database by card name
+    static func fetchCard(_ card: String) -> Card? {
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
@@ -119,11 +119,12 @@ class CardManager: NSObject {
         if let cards = try? context.fetch(request), !cards.isEmpty {
             return cards[0]
         }
+        
         return nil
     }
     
-    ///
-    static func fetchCardsContaining(name: String, tags: String) -> [Card]?{
+    /// Fetches all cards with given name or tags
+    static func fetchCardsContaining(name: String, tags: String) -> [Card]? {
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
@@ -133,11 +134,12 @@ class CardManager: NSObject {
         if let cards = try? context.fetch(request), !cards.isEmpty {
             return cards
         }
+        
         return nil
     }
     
     /// Retrieves all cards with certain color
-    static func fetchCardsBy(color: String) -> [Card]?{
+    static func fetchCardsBy(color: String) -> [Card]? {
         let context = AppDelegate.viewContext
         let request: NSFetchRequest<Card> = Card.fetchRequest()
         
@@ -147,24 +149,18 @@ class CardManager: NSObject {
         if let cards = try? context.fetch(request), !cards.isEmpty {
             return cards
         }
+        
         return nil
     }
     
     /// Adds URL for given image
     static private func addURLFor (_ image: UIImage! )  -> String? {
-        if image == nil {
-            return nil
-        }
+        if image == nil { return nil }
         
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
         let uniqueName = UUID().uuidString + ".png"
         // Change extension if you want to save as JPG/PNG/etc.
         let imageURL = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent(uniqueName))
-        
-        // probably is not required (just for testing)
-        let imageString = String(describing: imageURL)
-        print (uniqueName == imageString)
-        // * * * *
         
         do {
             try UIImageJPEGRepresentation(image, 1.0)?.write(to: imageURL, options: .atomic)
@@ -177,7 +173,7 @@ class CardManager: NSObject {
     
     /// Loads image from given path
     static func loadImageFromPath(_ path: String!) -> UIImage? {
-        if path == nil {return nil}
+        if path == nil { return nil }
         
         let documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as NSString
         let imageURL = URL(fileURLWithPath: documentDirectoryPath.appendingPathComponent(path))
@@ -194,18 +190,18 @@ class CardManager: NSObject {
     }
     
     /// Checks if given name already exist in certain context
-    static func isNameAlreadyExist(name: String, in context: NSManagedObjectContext) -> Bool?{
+    static func isNameAlreadyExist(name: String, in context: NSManagedObjectContext) -> Bool? {
         let request: NSFetchRequest<Card> = Card.fetchRequest()
-        
         request.predicate = NSPredicate(format: "cardName = %@", name)
-        if let result = try? context.fetch(request){
+        
+        if let result = try? context.fetch(request) {
             return !result.isEmpty
         }
         
         return nil
     }
     
-    /// need to be tested - Generates barcode image from given number as String
+    /// Generates barcode image from given number as String
     static func generateBarcode(from code: String) -> UIImage? {
         let data = code.data(using: .ascii)
         let filter = CIFilter(name: "CICode128BarcodeGenerator")
@@ -218,36 +214,11 @@ class CardManager: NSObject {
         return uiImage
     }
     
-    /*
-    /// need to be tested
-    static private func createSetOfTag(from tags: UITextView?, context: NSManagedObjectContext?) -> NSSet? {
-        if let textViewText = tags?.text {
-            var tagsSet = Set<Tag>()
-            
-            let rightString = textViewText.replacingOccurrences(of: "[\\W\\s]+", with: ",", options: .regularExpression)
-            let textArray = rightString.split(separator: ",")
-            let arrayOfUniqueTags = Array(Set(textArray))
-            
-            for tagText in arrayOfUniqueTags {
-                let tagInDB = Tag(context: context!)
-                
-                tagInDB.name = String(tagText)
-                tagsSet.insert(tagInDB)
-            }
-            
-            return tagsSet as NSSet
-        } else {
-            return nil
-        }
-    }
- */
-    
     /// Saves a passed context (just context.save)
-    static private func save(context: NSManagedObjectContext?){
+    static private func save(context: NSManagedObjectContext?) {
         do {
             try context?.save()
-        }
-        catch {
+        } catch {
             print(error.localizedDescription)
         }
     }

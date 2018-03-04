@@ -10,15 +10,16 @@ import UIKit
 
 @IBDesignable
 class MyImageView: UIImageView {
+    
     @IBInspectable
     var borderColor: UIColor? {
-        get{
+        get {
             if let color = layer.borderColor {
                 return UIColor(cgColor: color)
             }
             return nil
         }
-        set{
+        set {
             if let color = newValue {
                 layer.borderColor = color.cgColor
             } else {
@@ -29,23 +30,16 @@ class MyImageView: UIImageView {
     
     @IBInspectable
     var borderWidth: CGFloat {
-        get{
+        get {
             return layer.borderWidth
         }
-        set{
+        set {
             layer.borderWidth = newValue
         }
     }
 
     @IBInspectable
     var defaultImage: UIImage? = nil
-    /*
-    override var image: UIImage?{
-        didSet{
-            if image == nil{
-                image = defaultImage
-            }
-        }
-    }
-    */
+
+    
 }

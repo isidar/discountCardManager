@@ -9,28 +9,28 @@
 import UIKit
 import Foundation
 
-class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadDataIfNeeded()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
+class EditTableViewController: UITableViewController, UIPickerViewDelegate, UIPickerViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     // MARK: - Outlets
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var frontImageView: MyImageView!
     @IBOutlet weak var backImageView: MyImageView!
-    @IBOutlet weak var barcodeTextField: BarcodeTextField!
+    @IBOutlet weak var barcodeTextField: UITextField!
     @IBOutlet weak var barcodeImageView: MyImageView!
     @IBOutlet weak var colorPickerView: UIPickerView!
     @IBOutlet weak var tagsTextView: UITextView!
     @IBOutlet weak var logoImageView: MyImageView!
     @IBOutlet weak var descriptionTextView: UITextView!
+    
+    // MARK: - View Controller's life cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadDataIfNeeded()
+    }
+    
+    // MARK: - Actions
     
     @IBAction func doneButton(_ sender: UIBarButtonItem) {
         let title = navigationItem.title!
@@ -61,7 +61,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         
         switch title {
         case "New Card":
-            if CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
+            if CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)! {
                 Feature.showAlert(on: self, message: "This name already exist!")
                 return
             }
@@ -69,7 +69,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 name: name, frontImage: frontImage, backImage: backImage, barcodeNumber: barcodeNumber, barcodeImage: barcodeImage, color: colorName, tags: tagsTextView.text, logo: logoImage, description: descriptionTextView.text
             )
         default:
-            if name != title && CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)!{
+            if name != title && CardManager.isNameAlreadyExist(name: name, in: AppDelegate.viewContext)! {
                 Feature.showAlert(on: self, message: "This name already exist!")
                 return
             }
@@ -82,13 +82,10 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
             break
         }
         
-        removeLastView()
+        removeLastViewController()
     }
     
-    
-    var lastTappedButtonID: String?
-    
-    @IBAction func chooseImage(_ sender: ButtonStyle) {
+    @IBAction func chooseImage(_ sender: MyButton) {
         sender.flashAnimation()
         
         if let buttonID = sender.accessibilityIdentifier {
@@ -97,7 +94,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     
-    @IBAction func clearImage(_ sender: ButtonStyle) {
+    @IBAction func clearImage(_ sender: MyButton) {
         sender.flashAnimation()
         
         if let buttonID = sender.accessibilityIdentifier {
@@ -124,17 +121,13 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     
-    var barcodeNumberInTextField: String?
-    var wasGeneratedBarcode: Bool = false
-    var wasChoosenBarcodeImage: Bool = false
-    
-    @IBAction func generateBarcode(_ sender: ButtonStyle) {
+    @IBAction func generateBarcode(_ sender: MyButton) {
         sender.flashAnimation()
         
         if let number = barcodeTextField.text {
             if !number.containsOnlySpaces {
                 // check if all characters are numbers !!
-                if let image = CardManager.generateBarcode(from: number){
+                if let image = CardManager.generateBarcode(from: number) {
                     barcodeImageView.image = image
                     
                     wasGeneratedBarcode = true
@@ -148,13 +141,24 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     
-    private func loadDataIfNeeded(){
-        if let cardName = navigationItem.title, cardName != "New Card"{
-            if let card = CardManager.fetchCard(cardName){
+    // MARK: - Toggle switches
+    
+    var lastTappedButtonID: String?
+    
+    var barcodeNumberInTextField: String?
+    var wasGeneratedBarcode: Bool = false
+    var wasChoosenBarcodeImage: Bool = false
+    
+    // MARK: - Other functions
+    
+    /// Loads data to static cells if user selected particular card in MainViewController
+    private func loadDataIfNeeded() {
+        if let cardName = navigationItem.title, cardName != "New Card" {
+            if let card = CardManager.fetchCard(cardName) {
                 nameTextField.text = card.cardName
                 
                 // Front Image init
-                if let frontImage = CardManager.loadImageFromPath(card.frontImage){
+                if let frontImage = CardManager.loadImageFromPath(card.frontImage) {
                     frontImageView.contentMode = .scaleToFill
                     frontImageView.image = frontImage
                 } else {
@@ -163,7 +167,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 }
                 
                 // Back Image init
-                if let backImage = CardManager.loadImageFromPath(card.backImage){
+                if let backImage = CardManager.loadImageFromPath(card.backImage) {
                     backImageView.contentMode = .scaleToFill
                     backImageView.image = backImage
                 } else {
@@ -177,7 +181,7 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                     barcodeImageView.image = CardManager.generateBarcode(from: number)
                     barcodeTextField.text = number
                     barcodeNumberInTextField = number
-                } else if let barcodeImage = CardManager.loadImageFromPath(card.barcodeImage){
+                } else if let barcodeImage = CardManager.loadImageFromPath(card.barcodeImage) {
                     barcodeImageView.contentMode = .scaleToFill
                     barcodeImageView.image = barcodeImage
                 } else {
@@ -186,14 +190,14 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
                 }
                 
                 
-                if let pickedColorIndex = CardManager.colorFilters.index(of: card.colorFilter!){
+                if let pickedColorIndex = CardManager.colorFilters.index(of: card.colorFilter!) {
                     colorPickerView.selectRow(pickedColorIndex, inComponent: 0, animated: true)
                 }
                 
                 tagsTextView.text = card.tags
                 
                 // Logo Image init
-                if let logoImage = CardManager.loadImageFromPath(card.logo){
+                if let logoImage = CardManager.loadImageFromPath(card.logo) {
                     logoImageView.contentMode = .scaleToFill
                     logoImageView.image = logoImage
                 } else {
@@ -206,21 +210,22 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     
-    private func pickImage(){
+    /// Shows action sheet with three options: camera, photo library, cancel
+    private func pickImage() {
         let imagePickerController = UIImagePickerController()
         imagePickerController.delegate = self
         
         let actionSheet = UIAlertController(title: "Photo Source", message: "Choose a source", preferredStyle: .actionSheet)
         
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: {(action: UIAlertAction) in
-            if UIImagePickerController.isSourceTypeAvailable(.camera){
+        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { (action: UIAlertAction) in
+            if UIImagePickerController.isSourceTypeAvailable(.camera) {
                 imagePickerController.sourceType = .camera
                 self.present(imagePickerController, animated: true, completion: nil)
             } else {
                 Feature.showAlert(on: self, message: "Camera is not available")
             }
         }))
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: {(action: UIAlertAction) in
+        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { (action: UIAlertAction) in
             imagePickerController.sourceType = .photoLibrary
             self.present(imagePickerController, animated: true, completion: nil)
         }))
@@ -229,7 +234,8 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         self.present(actionSheet, animated: true, completion: nil)
     }
     
-    private func removeLastView(){
+    /// Removes last ViewController from NavigationController
+    private func removeLastViewController() {
         if let nav = self.navigationController {
             var stack = nav.viewControllers
             
@@ -239,78 +245,13 @@ class EditTableVC: UITableViewController, UIPickerViewDelegate, UIPickerViewData
         }
     }
     
-    private func updateAllUIOf(viewControllers: [UIViewController]){
+    /// Executes "viewDidLoad" method of given ViewControllers in array
+    private func updateAllUIOf(viewControllers: [UIViewController]) {
         for vc in viewControllers {
             vc.viewDidLoad()
         }
     }
+    
+    
 }
 
-extension EditTableVC {
-    // MARK: - PickerView Data Source
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return CardManager.colorFilters[row]
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return CardManager.colorFilters.count
-    }
-    
-    // MARK: - ImagePicker Delegate methods
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        
-        if let buttonID = lastTappedButtonID {
-            switch buttonID {
-            case "Choose Front Image":
-                frontImageView.contentMode = .scaleToFill
-                frontImageView.image = image
-            case "Choose Back Image":
-                backImageView.contentMode = .scaleToFill
-                backImageView.image = image
-            case "Choose Barcode Image":
-                barcodeImageView.contentMode = .scaleToFill
-                barcodeImageView.image = image
-                
-                wasGeneratedBarcode = false
-                wasChoosenBarcodeImage = true
-            case "Choose Logo Image":
-                logoImageView.contentMode = .scaleToFill
-                logoImageView.image = image
-            default: break
-            }
-        }
-        
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    // MARK: - TextField Delegate methods
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-    
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-        tagsTextView.resignFirstResponder()
-        descriptionTextView.resignFirstResponder()
-    }
-    
-    
-    // MARK: - TextView Delegate methods
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-        if text == "\n"{
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-    }
-    
-}

@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2109556B204B6116005FFC51 /* ExtensionMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109556A204B6116005FFC51 /* ExtensionMainViewController.swift */; };
+		2109556D204B612C005FFC51 /* ExtensionEditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109556C204B612C005FFC51 /* ExtensionEditTableViewController.swift */; };
+		2109556F204B613D005FFC51 /* ExtensionShowInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2109556E204B613D005FFC51 /* ExtensionShowInfoViewController.swift */; };
 		211BABCC1FB0675600535840 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 211BABCB1FB0675600535840 /* ButtonView.swift */; };
 		2128D4231FB9DEAE00691979 /* MyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2128D4221FB9DEAE00691979 /* MyImageView.swift */; };
-		2159204F1FBB38B10072279C /* ShowInfoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2159204E1FBB38B10072279C /* ShowInfoVC.swift */; };
-		215920531FBB6CCC0072279C /* BarcodeTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215920521FBB6CCC0072279C /* BarcodeTextField.swift */; };
+		2159204F1FBB38B10072279C /* ShowInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2159204E1FBB38B10072279C /* ShowInfoViewController.swift */; };
 		215D2E291FB2206B009E78EA /* CardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D2E281FB2206B009E78EA /* CardManager.swift */; };
 		215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215D54B41FB32507003D7D6D /* Custom Features.swift */; };
 		21821A041FD9F57A00E5E23D /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21821A031FD9F57A00E5E23D /* String.swift */; };
@@ -21,15 +23,17 @@
 		21D1D9EB1FAB4528003E77F3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21D1D9E91FAB4528003E77F3 /* LaunchScreen.storyboard */; };
 		21D1D9F61FAB4B55003E77F3 /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */; };
 		21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB471FB1CABB00A48F24 /* Card.swift */; };
-		21E3EB4E1FB1D37D00A48F24 /* EditTableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4D1FB1D37D00A48F24 /* EditTableVC.swift */; };
-		21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */; };
+		21E3EB4E1FB1D37D00A48F24 /* EditTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4D1FB1D37D00A48F24 /* EditTableViewController.swift */; };
+		21E3EB501FB1D38E00A48F24 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21E3EB4F1FB1D38E00A48F24 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2109556A204B6116005FFC51 /* ExtensionMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMainViewController.swift; sourceTree = "<group>"; };
+		2109556C204B612C005FFC51 /* ExtensionEditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionEditTableViewController.swift; sourceTree = "<group>"; };
+		2109556E204B613D005FFC51 /* ExtensionShowInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionShowInfoViewController.swift; sourceTree = "<group>"; };
 		211BABCB1FB0675600535840 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		2128D4221FB9DEAE00691979 /* MyImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyImageView.swift; sourceTree = "<group>"; };
-		2159204E1FBB38B10072279C /* ShowInfoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInfoVC.swift; sourceTree = "<group>"; };
-		215920521FBB6CCC0072279C /* BarcodeTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTextField.swift; sourceTree = "<group>"; };
+		2159204E1FBB38B10072279C /* ShowInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowInfoViewController.swift; sourceTree = "<group>"; };
 		215D2E281FB2206B009E78EA /* CardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardManager.swift; sourceTree = "<group>"; };
 		215D54B41FB32507003D7D6D /* Custom Features.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Custom Features.swift"; sourceTree = "<group>"; };
 		21821A031FD9F57A00E5E23D /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
@@ -42,8 +46,8 @@
 		21D1D9EC1FAB452A003E77F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
 		21E3EB471FB1CABB00A48F24 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
-		21E3EB4D1FB1D37D00A48F24 /* EditTableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableVC.swift; sourceTree = "<group>"; };
-		21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
+		21E3EB4D1FB1D37D00A48F24 /* EditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTableViewController.swift; sourceTree = "<group>"; };
+		21E3EB4F1FB1D38E00A48F24 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,12 +61,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21095566204B6060005FFC51 /* MainViewController */ = {
+			isa = PBXGroup;
+			children = (
+				21E3EB4F1FB1D38E00A48F24 /* MainViewController.swift */,
+				2109556A204B6116005FFC51 /* ExtensionMainViewController.swift */,
+			);
+			path = MainViewController;
+			sourceTree = "<group>";
+		};
+		21095567204B6071005FFC51 /* EditTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				21E3EB4D1FB1D37D00A48F24 /* EditTableViewController.swift */,
+				2109556C204B612C005FFC51 /* ExtensionEditTableViewController.swift */,
+			);
+			path = EditTableViewController;
+			sourceTree = "<group>";
+		};
+		21095568204B607A005FFC51 /* ShowInfoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				2159204E1FBB38B10072279C /* ShowInfoViewController.swift */,
+				2109556E204B613D005FFC51 /* ExtensionShowInfoViewController.swift */,
+			);
+			path = ShowInfoViewController;
+			sourceTree = "<group>";
+		};
 		211BABD31FB06A5C00535840 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				21E3EB4F1FB1D38E00A48F24 /* MainVC.swift */,
-				21E3EB4D1FB1D37D00A48F24 /* EditTableVC.swift */,
-				2159204E1FBB38B10072279C /* ShowInfoVC.swift */,
+				21095566204B6060005FFC51 /* MainViewController */,
+				21095567204B6071005FFC51 /* EditTableViewController */,
+				21095568204B607A005FFC51 /* ShowInfoViewController */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -82,7 +113,6 @@
 				21D1D9F51FAB4B55003E77F3 /* MainTableViewCell.swift */,
 				211BABCB1FB0675600535840 /* ButtonView.swift */,
 				2128D4221FB9DEAE00691979 /* MyImageView.swift */,
-				215920521FBB6CCC0072279C /* BarcodeTextField.swift */,
 			);
 			path = "Other Custom Views";
 			sourceTree = "<group>";
@@ -219,15 +249,17 @@
 			files = (
 				21D1D9E61FAB4524003E77F3 /* Discount_Card_Manager.xcdatamodeld in Sources */,
 				21821A041FD9F57A00E5E23D /* String.swift in Sources */,
-				2159204F1FBB38B10072279C /* ShowInfoVC.swift in Sources */,
+				2159204F1FBB38B10072279C /* ShowInfoViewController.swift in Sources */,
 				21D1D9F61FAB4B55003E77F3 /* MainTableViewCell.swift in Sources */,
 				21D1D9DE1FAB451C003E77F3 /* AppDelegate.swift in Sources */,
 				215D2E291FB2206B009E78EA /* CardManager.swift in Sources */,
-				21E3EB4E1FB1D37D00A48F24 /* EditTableVC.swift in Sources */,
-				215920531FBB6CCC0072279C /* BarcodeTextField.swift in Sources */,
-				21E3EB501FB1D38E00A48F24 /* MainVC.swift in Sources */,
+				21E3EB4E1FB1D37D00A48F24 /* EditTableViewController.swift in Sources */,
+				21E3EB501FB1D38E00A48F24 /* MainViewController.swift in Sources */,
+				2109556B204B6116005FFC51 /* ExtensionMainViewController.swift in Sources */,
 				21E3EB481FB1CABB00A48F24 /* Card.swift in Sources */,
+				2109556D204B612C005FFC51 /* ExtensionEditTableViewController.swift in Sources */,
 				2128D4231FB9DEAE00691979 /* MyImageView.swift in Sources */,
+				2109556F204B613D005FFC51 /* ExtensionShowInfoViewController.swift in Sources */,
 				211BABCC1FB0675600535840 /* ButtonView.swift in Sources */,
 				215D54B51FB32507003D7D6D /* Custom Features.swift in Sources */,
 			);

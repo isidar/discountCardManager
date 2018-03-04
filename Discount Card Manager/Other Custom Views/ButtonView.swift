@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class ButtonStyle: UIButton {
+class MyButton: UIButton {
     
     @IBInspectable
     var borderColor: UIColor? {
@@ -38,8 +38,12 @@ class ButtonStyle: UIButton {
         }
     }
     
-    func flashAnimation(duration: Double = 0.05, fromValue: Double = 1, toValue: Double = 0.7, autoreverses: Bool = true,  repeatCount: Float = 1){
+    // MARK: - Other functions
+    
+    /// Adds flash animation with given preferences
+    func flashAnimation(duration: Double = 0.05, fromValue: Double = 1, toValue: Double = 0.7, autoreverses: Bool = true,  repeatCount: Float = 1) {
         let flash = CABasicAnimation(keyPath: "opacity")
+        
         flash.duration = duration
         flash.fromValue = fromValue
         flash.toValue = toValue
@@ -49,5 +53,5 @@ class ButtonStyle: UIButton {
         
         layer.add(flash, forKey: nil)
     }
+    
 }
-

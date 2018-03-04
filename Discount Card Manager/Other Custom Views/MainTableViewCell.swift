@@ -9,7 +9,13 @@
 import UIKit
 
 class MainTableViewCell: UITableViewCell {
+    // MARK: - Outlets
+    
+    @IBOutlet weak var logoImageView: MyImageView!
+    @IBOutlet weak var cardNameLabel: UILabel!
 
+    // MARK: - View Cell's life cycle
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,11 +26,6 @@ class MainTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    @IBOutlet weak var logoImageView: MyImageView!
-    @IBOutlet weak var cardNameLabel: UILabel!
     
-    @IBAction func showDescription(_ sender: UIButton) {
-        
-    }
     
 }

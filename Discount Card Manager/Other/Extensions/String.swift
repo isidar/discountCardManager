@@ -18,4 +18,6 @@ extension String {
             return numberOfMatches > 0 || self.isEmpty
         }
     }
+    
+    
 }

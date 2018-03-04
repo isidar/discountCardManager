@@ -8,28 +8,30 @@
 
 import UIKit
 
-class ShowInfoVC: UIViewController, UIScrollViewDelegate {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        loadData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-   
+class ShowInfoViewController: UIViewController, UIScrollViewDelegate {
+    // MARK: - Outlets
+    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var pageControl: UIPageControl!
-    
     
     @IBOutlet weak var frontImageView: MyImageView!
     @IBOutlet weak var backImageView: MyImageView!
     @IBOutlet weak var barcodeImageView: MyImageView!
     
-    private func loadData(){
+    // MARK: - View Controller's life cycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        loadData()
+    }
+    
+    // MARK: - Other functions
+    
+    /// Loads UIImages with appropriate images
+    private func loadData() {
         if let cardName = navigationItem.title {
-            if let card = CardManager.fetchCard(cardName){
+            if let card = CardManager.fetchCard(cardName) {
                 
                 // Front Image init
                 if let frontImage = CardManager.loadImageFromPath(card.frontImage){
@@ -76,7 +78,7 @@ class ShowInfoVC: UIViewController, UIScrollViewDelegate {
     }
     
     /// Rotates UIImageView in left or right direction
-    private func rotate(images: UIImageView... , direction: Feature.Direction){
+    private func rotate(images: UIImageView... , direction: Feature.Direction) {
         switch direction {
         case .left:
             for imageView in images {
@@ -90,7 +92,7 @@ class ShowInfoVC: UIViewController, UIScrollViewDelegate {
     }
     
     /// Rotates UIImage in right direction
-    func rotate(image: UIImage?) -> UIImage?{
+    func rotate(image: UIImage?) -> UIImage? {
         if let originalImage = image {
             let rotateSize = CGSize(width: originalImage.size.height, height: originalImage.size.width)
             UIGraphicsBeginImageContextWithOptions(rotateSize, true, 2.0)
@@ -109,19 +111,13 @@ class ShowInfoVC: UIViewController, UIScrollViewDelegate {
         return nil
     }
     
-    // MARK: - ScrollView Delegate
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        pageControl.currentPage = Int(scrollView.contentOffset.x / (scrollView.contentSize.width / 3))
-    }
-    
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
             case "Edit":
-                if let vc = segue.destination as? EditTableVC {
+                if let vc = segue.destination as? EditTableViewController {
                     if let cardName = self.navigationItem.title {
                         vc.navigationItem.title = cardName
                     }
@@ -133,3 +129,4 @@ class ShowInfoVC: UIViewController, UIScrollViewDelegate {
     
 
 }
+

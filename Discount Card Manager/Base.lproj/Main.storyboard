@@ -15,7 +15,7 @@
         <!--Discount Cards-->
         <scene sceneID="CzJ-Re-ddh">
             <objects>
-                <viewController id="K6C-G4-9Do" customClass="MainVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="K6C-G4-9Do" customClass="MainViewController" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uJE-5y-S3g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -40,7 +40,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-AH-ZrM" customClass="MyImageView" customModule="Discount_Card_Manager" customModuleProvider="target">
-                                                    <rect key="frame" x="15" y="4" width="61" height="53"/>
+                                                    <rect key="frame" x="15" y="4" width="60" height="52"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="zIW-AH-ZrM" secondAttribute="height" multiplier="15:13" id="PzQ-vk-sj0"/>
@@ -56,7 +56,7 @@
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j6V-Hx-pzz">
-                                                    <rect key="frame" x="84" y="15.666666666666664" width="315" height="30"/>
+                                                    <rect key="frame" x="83" y="15" width="316" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -134,7 +134,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Egw-tI-Fca">
                                         <rect key="frame" x="10" y="8.6666666666666288" width="393.66666666666669" height="39"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEM-Qq-Bew" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QEM-Qq-Bew" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="47.666666666666664" height="39"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <state key="normal" title="All"/>
@@ -150,7 +150,7 @@
                                                     <action selector="filterCards:" destination="K6C-G4-9Do" eventType="touchUpInside" id="Y35-iH-vg0"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7C-LZ-xrP" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A7C-LZ-xrP" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="57.666666666666671" y="0.0" width="47.666666666666671" height="39"/>
                                                 <color key="backgroundColor" red="0.91815090673575139" green="0.91476949667166063" blue="0.90462526647938823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
@@ -167,7 +167,7 @@
                                                     <action selector="filterCards:" destination="K6C-G4-9Do" eventType="touchUpInside" id="wBx-wR-4i7"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBs-gN-zCd" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBs-gN-zCd" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="115.33333333333333" y="0.0" width="47.666666666666671" height="39"/>
                                                 <color key="backgroundColor" red="1" green="0.62639643700585212" blue="0.64439448488529139" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Red">
@@ -185,7 +185,7 @@
                                                     <action selector="filterCards:" destination="K6C-G4-9Do" eventType="touchUpInside" id="Pfu-U7-hId"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx0-Y4-eZO" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lx0-Y4-eZO" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="173" y="0.0" width="47.666666666666657" height="39"/>
                                                 <color key="backgroundColor" red="0.79870213952654845" green="1" blue="0.82918155498291157" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Green">
@@ -203,7 +203,7 @@
                                                     <action selector="filterCards:" destination="K6C-G4-9Do" eventType="touchUpInside" id="yZv-tw-tkT"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Z9-ya-XCa" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Z9-ya-XCa" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="230.66666666666666" y="0.0" width="47.666666666666657" height="39"/>
                                                 <color key="backgroundColor" red="0.79548012152682901" green="0.89445493794979125" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Blue">
@@ -221,7 +221,7 @@
                                                     <action selector="filterCards:" destination="K6C-G4-9Do" eventType="touchUpInside" id="8Hf-hM-2rb"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9b-TW-xGV" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9b-TW-xGV" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="288.33333333333331" y="0.0" width="47.666666666666686" height="39"/>
                                                 <color key="backgroundColor" red="1" green="0.99191569869504226" blue="0.76637846234159412" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Yellow">
@@ -239,7 +239,7 @@
                                                     <action selector="filterCards:" destination="K6C-G4-9Do" eventType="touchUpInside" id="h14-YJ-bmd"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwx-Vp-cgy" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mwx-Vp-cgy" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                 <rect key="frame" x="346" y="0.0" width="47.666666666666686" height="39"/>
                                                 <color key="backgroundColor" red="0.46856784326424872" green="0.46583426614034795" blue="0.45629444385566709" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="Black">
@@ -320,12 +320,12 @@
                     </connections>
                 </barButtonItem>
             </objects>
-            <point key="canvasLocation" x="-2499" y="-806"/>
+            <point key="canvasLocation" x="-2478" y="-806"/>
         </scene>
         <!--Card Name-->
         <scene sceneID="MX8-yk-Mnn">
             <objects>
-                <viewController id="Evd-hp-MZm" customClass="ShowInfoVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Evd-hp-MZm" customClass="ShowInfoViewController" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uut-ES-mK8">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -400,12 +400,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ai9-rF-f3c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1687.2" y="-736.28185907046486"/>
+            <point key="canvasLocation" x="-1774" y="-806"/>
         </scene>
         <!--New Card / Edit-->
         <scene sceneID="mEo-vH-Q6D">
             <objects>
-                <tableViewController id="Yq3-7Y-sqt" customClass="EditTableVC" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Yq3-7Y-sqt" customClass="EditTableViewController" customModule="Discount_Card_Manager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="5bv-3l-Zj7">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -467,7 +467,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="n6s-qk-aDq" userLabel="Buttons">
                                                             <rect key="frame" x="0.0" y="149" width="337" height="30.666666666666657"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-e4-zhx" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkZ-e4-zhx" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Front Image"/>
@@ -484,7 +484,7 @@
                                                                         <action selector="clearImage:" destination="Yq3-7Y-sqt" eventType="touchUpInside" id="8i0-nn-GTz"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-Xf-XpL" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDJ-Xf-XpL" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="169.66666666666663" y="0.0" width="167.33333333333337" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Front Image"/>
@@ -545,7 +545,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="MEs-Fk-DgU" userLabel="Buttons">
                                                             <rect key="frame" x="0.0" y="149" width="337" height="30.666666666666657"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75z-J1-zyz" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75z-J1-zyz" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="167.66666666666666" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Back Image"/>
@@ -562,7 +562,7 @@
                                                                         <action selector="clearImage:" destination="Yq3-7Y-sqt" eventType="touchUpInside" id="Ztv-UD-NHV"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2W-5R-wQe" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M2W-5R-wQe" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="169.66666666666663" y="0.0" width="167.33333333333337" height="30.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Back Image"/>
@@ -622,7 +622,7 @@
                                                                         <outlet property="delegate" destination="Yq3-7Y-sqt" id="wAh-Wx-dw2"/>
                                                                     </connections>
                                                                 </textField>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-uD-f9x" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3t0-uD-f9x" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="263" y="0.0" width="74" height="30"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -662,7 +662,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="zo3-g0-pKt" userLabel="Buttons">
                                                             <rect key="frame" x="0.0" y="200" width="337" height="29.666666666666657"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NP9-cv-M1t" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NP9-cv-M1t" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="168" height="29.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Barcode Image"/>
@@ -683,7 +683,7 @@
                                                                         <action selector="clearImage:" destination="Yq3-7Y-sqt" eventType="touchUpInside" id="ekD-1r-dge"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgo-82-qnV" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dgo-82-qnV" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="169" y="0.0" width="168" height="29.666666666666668"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Barcode Image"/>
@@ -819,7 +819,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="Wo5-HJ-rVv" userLabel="Buttons">
                                                             <rect key="frame" x="152" y="0.0" width="185" height="59.666666666666664"/>
                                                             <subviews>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc1-la-Ojx" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc1-la-Ojx" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="0.0" width="185" height="29"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Choose Logo Image"/>
@@ -836,7 +836,7 @@
                                                                         <action selector="chooseImage:" destination="Yq3-7Y-sqt" eventType="touchUpInside" id="UuD-wv-dfF"/>
                                                                     </connections>
                                                                 </button>
-                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meP-w1-YAw" customClass="ButtonStyle" customModule="Discount_Card_Manager" customModuleProvider="target">
+                                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meP-w1-YAw" customClass="MyButton" customModule="Discount_Card_Manager" customModuleProvider="target">
                                                                     <rect key="frame" x="0.0" y="31" width="185" height="28.666666666666671"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <accessibility key="accessibilityConfiguration" identifier="Clear Logo Image"/>
@@ -931,7 +931,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tRU-tL-flF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2497" y="416"/>
+            <point key="canvasLocation" x="-2459" y="449"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rWU-7L-xKc">
